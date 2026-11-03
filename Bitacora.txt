@@ -263,3 +263,32 @@ Dia 5 - MiniReto 9: navbar responsive y botones unificados
     y Enter sobre el boton lo cierra.
     Conflictos: los botones btn-success y btn-outline-success traen su propio verde (#198754); se cambiaron las variables --bs-btn-* en styles.css
     para usar el verde de la marca, sin !important. Lo mismo con --bs-navbar-* para los colores del menu.
+
+
+Dia 5 - MiniReto 10: cards y carrusel de promociones (index.html)
+    Flota, rutas y tipos de bicicleta ahora usan card dentro de la grilla (row g-3 + col-*): card h-100 > card-img-top + card-body
+    (card-title, card-text, precio y boton). h-100 hace que todas las cards de una fila midan lo mismo.
+    Carrusel de 3 promociones (carousel slide, data-bs-ride="carousel"), con indicadores y controles anterior/siguiente.
+    Cada imagen tiene alt; los controles llevan texto para lectores de pantalla en visually-hidden ("Promocion anterior/siguiente").
+    Pruebas: 360 / 768 / 1280 px sin scroll horizontal; cards de igual altura en cada fila;
+    el carrusel avanza solo a los 5 s y con el boton siguiente; con teclado los botones del carrusel reciben foco y Enter cambia de promocion.
+    styles.css: no habia reglas de tarjetas propias que borrar (ya se habian eliminado en el MiniReto 7);
+    solo se agrego --bs-card-border-color para que las cards usen el gris de la marca.
+
+
+Dia 6 - MiniReto 11: formulario con validacion visual, alerta y modal (Reservas)
+    Formulario: form-label, form-control, form-check / form-check-input / form-check-label en todos los controles.
+    <form class="needs-validation" novalidate>: el script oficial de Bootstrap (copiado sin cambios) agrega "was-validated"
+    y muestra los .invalid-feedback; las reglas nativas (required, pattern, min, max, minlength, type=email) siguen decidiendo si es valido.
+    Mensajes por campo que explican como corregir (por ejemplo: "El celular debe tener 10 digitos y empezar por 3").
+    Alerta informativa cerrable arriba del formulario (alert-dismissible + btn-close + data-bs-dismiss="alert").
+    Modal "Politicas de alquiler" con las 5 politicas en lista ordenada, abierto desde el boton "Ver politicas" junto a la casilla de aceptacion
+    (data-bs-toggle="modal" y data-bs-target="#modalPoliticas" = id del modal).
+    Pruebas: formulario vacio -> 9 mensajes especificos y no se envia; pattern del celular, min/max de la cantidad, minlength del nombre
+    (probado escribiendo a mano: 2 letras = invalido) y el correo siguen funcionando; formulario completo -> valido.
+    Alerta: se cierra con su boton (tambien con Enter). Modal: se abre con Enter en el boton, se cierra con Esc y con su boton, y el foco vuelve al boton.
+    360 px y 768 px sin scroll horizontal; documento y celular apilados en el celular y en una fila desde 768.
+    Correcciones de fallos que ya tenia el formulario: las etiquetas de los radio apuntaban todas a for="empezando" (ahora cada una a su id),
+    el textarea repetia id y name "nombre" (ahora "observaciones") y action="gracias.html" no coincidia con Gracias.html
+    (en GitHub Pages las mayusculas importan, daria error 404).
+    Conflicto con Bootstrap: mis reglas form input / form label pisaban .form-control y los estilos de validacion; las borre de styles.css.

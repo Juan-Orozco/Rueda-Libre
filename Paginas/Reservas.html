@@ -42,86 +42,132 @@
         <div class="row g-4">
         <!-- Formulario: 12 en celular, 8 de 12 desde md -->
         <div class="col-12 col-md-8">
-        <form action="gracias.html" method="get">
+        <!-- Aviso: se puede cerrar con la X (data-bs-dismiss="alert") -->
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>Recuerda:</strong> trae tu documento de identidad original para recoger la bicicleta.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar aviso"></button>
+        </div>
+
+        <!-- needs-validation + novalidate: Bootstrap muestra los errores; las reglas nativas (required, pattern, min, max, minlength) siguen decidiendo si es valido -->
+        <form class="needs-validation" action="Gracias.html" method="get" novalidate>
             <fieldset>
                 <legend>Tus datos</legend>
-                <label for="nombre">*Nombre completo:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">*Nombre completo:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe tu nombre" minlength="3" required>
+                    <div class="invalid-feedback">Escribe tu nombre completo (mínimo 3 letras).</div>
+                </div>
 
-                <br><br>
-
-                <label for="email">*Correo electrónico:</label>
-                <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
-
-                <br><br>
+                <div class="mb-3">
+                    <label for="email" class="form-label">*Correo electrónico:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                    <div class="invalid-feedback">Escribe un correo válido, por ejemplo nombre@correo.com.</div>
+                </div>
 
                 <!-- Campos cortos: uno debajo del otro en celular, lado a lado desde sm -->
                 <div class="row g-3">
                     <div class="col-12 col-sm-6">
-                        <label for="documento">*Numero de documento:</label>
-                        <input type="text" id="documento" name="documento" placeholder="Escriba su documento" required>
+                        <label for="documento" class="form-label">*Número de documento:</label>
+                        <input type="text" class="form-control" id="documento" name="documento" placeholder="Escriba su documento" inputmode="numeric" minlength="5" required>
+                        <div class="invalid-feedback">Escribe tu número de documento, sin puntos (mínimo 5 dígitos).</div>
                     </div>
                     <div class="col-12 col-sm-6">
-                        <label for="celular">*Celular:</label>
-                        <input type="tel" id="celular" name="celular" placeholder="3001234567" pattern="3[0-9]{9}" title="El número debe tener 10 dígitos y empezar por 3." required >
+                        <label for="celular" class="form-label">*Celular:</label>
+                        <input type="tel" class="form-control" id="celular" name="celular" placeholder="3001234567" pattern="3[0-9]{9}" title="El número debe tener 10 dígitos y empezar por 3." required>
+                        <div class="invalid-feedback">El celular debe tener 10 dígitos y empezar por 3, por ejemplo 3001234567.</div>
                     </div>
                 </div>
-
             </fieldset>
 
             <fieldset>
                 <legend>Tu alquiler</legend>
-                    <label for="fecha_hora_reserva">Selecciona el día y la hora: </label>
-                    <input type="datetime-local" id="fecha_hora_reserva" name="fecha_hora_reserva" required>
-                    <p> Selecione el tipo de bicicleata:</p>
-                    <input type="radio" id="Urbana" name="tipo" value="Bici_Urbana" required >
-                    <label for="empezando">Urbana</label>
-                    <input type="radio" id="Eléctrica" name="tipo" value="Bici_Electrica" required >
-                    <label for="empezando">Eléctrica</label>
-                    <input type="radio" id="Montaña" name="tipo" value="Bici_montaña" required >
-                    <label for="empezando">Montaña</label>
+                <div class="mb-3">
+                    <label for="fecha_hora_reserva" class="form-label">*Selecciona el día y la hora:</label>
+                    <input type="datetime-local" class="form-control" id="fecha_hora_reserva" name="fecha_hora_reserva" required>
+                    <div class="invalid-feedback">Elige el día y la hora en que recogerás la bicicleta.</div>
+                </div>
 
-                    <p> Selecione el plan:</p>
-                    <input type="radio" id="hora" name="horario" value="hora" required >
-                    <label for="empezando">1 hora</label>
-                    <input type="radio" id="Medio" name="horario" value="Medio" required >
-                    <label for="empezando">Medio dia</label>
-                    <input type="radio" id="completo" name="horario" value="completo" required >
-                    <label for="empezando">Dia completo</label>
+                <div class="mb-3">
+                    <p class="form-label mb-1">*Selecciona el tipo de bicicleta:</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="Urbana" name="tipo" value="Bici_Urbana" required>
+                            <label class="form-check-label" for="Urbana">Urbana</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="Electrica" name="tipo" value="Bici_Electrica" required>
+                            <label class="form-check-label" for="Electrica">Eléctrica</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="Montana" name="tipo" value="Bici_montaña" required>
+                            <label class="form-check-label" for="Montana">Montaña</label>
+                            <div class="invalid-feedback">Elige el tipo de bicicleta que quieres alquilar.</div>
+                        </div>
+                </div>
 
-                    <p> Selecione la ruta:</p>
-                    <input type="radio" id="ninguna" name="ruta" value="ninguna" required >
-                    <label for="empezando">Ninguna</label>
-                    <input type="radio" id="Parques" name="ruta" value="Río_y_Parques" required >
-                    <label for="empezando">Río y Parques</label>
-                    <input type="radio" id="Barrio" name="ruta" value="Sabores_de_arrio" required >
-                    <label for="empezando">Sabores de Barrio	</label>
-                    <input type="radio" id="Palmas" name="ruta" value="Reto _Las_Palmas" required >
-                    <label for="empezando">Reto Las Palmas</label>
+                <div class="mb-3">
+                    <p class="form-label mb-1">*Selecciona el plan:</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="hora" name="horario" value="hora" required>
+                            <label class="form-check-label" for="hora">1 hora</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="Medio" name="horario" value="Medio" required>
+                            <label class="form-check-label" for="Medio">Medio día</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="completo" name="horario" value="completo" required>
+                            <label class="form-check-label" for="completo">Día completo</label>
+                            <div class="invalid-feedback">Elige el plan de alquiler: 1 hora, medio día o día completo.</div>
+                        </div>
+                </div>
 
-                    <p>
-                        <label for="cantidad_bicis">Cantidad de bicicletas:</label>
-                        <input type="number" id="cantidad_bicis" name="cantidad_bicis" min="1" max="5" value="1" required>
-                    </p>
+                <div class="mb-3">
+                    <p class="form-label mb-1">*Selecciona la ruta:</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="ninguna" name="ruta" value="ninguna" required>
+                            <label class="form-check-label" for="ninguna">Ninguna</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="Parques" name="ruta" value="Río_y_Parques" required>
+                            <label class="form-check-label" for="Parques">Río y Parques</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="Barrio" name="ruta" value="Sabores_de_Barrio" required>
+                            <label class="form-check-label" for="Barrio">Sabores de Barrio</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="Palmas" name="ruta" value="Reto_Las_Palmas" required>
+                            <label class="form-check-label" for="Palmas">Reto Las Palmas</label>
+                            <div class="invalid-feedback">Elige una ruta guiada o marca «Ninguna» si solo quieres la bicicleta.</div>
+                        </div>
+                </div>
+
+                <div class="mb-3 col-12 col-sm-6">
+                    <label for="cantidad_bicis" class="form-label">*Cantidad de bicicletas:</label>
+                    <input type="number" class="form-control" id="cantidad_bicis" name="cantidad_bicis" min="1" max="5" value="1" required>
+                    <div class="invalid-feedback">Indica cuántas bicicletas necesitas: entre 1 y 5.</div>
+                </div>
             </fieldset>
 
             <fieldset>
                 <legend>Confirmación</legend>
-                <label for="que_esperas"> Observaciones: </label> <br>
-                <textarea type="text" id="nombre" name="nombre"  placeholder=""></textarea>
-                <br><br>
+                <div class="mb-3">
+                    <label for="observaciones" class="form-label">Observaciones:</label>
+                    <textarea class="form-control" id="observaciones" name="observaciones" rows="3"></textarea>
+                </div>
 
-                <input type="checkbox" id="acepto_conducta" name="acepta_conducta" value="Si" required>
-
-                <label for="acepto_conducta"> Acepto las politicas del alquiler. </label>
-
-                <br><br>
+                <!-- Casilla de aceptacion + boton que abre el modal de politicas -->
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="acepto_conducta" name="acepta_conducta" value="Si" required>
+                        <label class="form-check-label" for="acepto_conducta">Acepto las políticas del alquiler.</label>
+                        <div class="invalid-feedback">Debes aceptar las políticas del alquiler para poder reservar.</div>
+                    </div>
+                    <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalPoliticas">Ver políticas</button>
+                </div>
 
                 <button type="submit" class="btn btn-success btn-lg">Inscribirme</button>
-                
-
             </fieldset>
-        
         </form>
         </div>
 
@@ -154,6 +200,51 @@
             <p class="mb-0">Horario: lunes a sábado, 8:00 a.m. - 6:00 p.m.</p>
         </div>
     </footer><a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" class="whatsapp">WhatsApp</a>
+    <!-- Modal de politicas: se abre desde el boton "Ver politicas" (data-bs-target="#modalPoliticas" = id del modal); Esc y la X lo cierran -->
+    <div class="modal fade" id="modalPoliticas" tabindex="-1" aria-labelledby="tituloPoliticas" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="tituloPoliticas">Políticas de alquiler</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <ol class="mb-0">
+                        <li>Presenta tu documento de identidad original al recoger la bicicleta.</li>
+                        <li>Revisa la bicicleta con el asesor antes de salir.</li>
+                        <li>Cada 15 minutos de retraso en la devolución tienen un recargo de $5.000.</li>
+                        <li>Los daños por mal uso se cobran según el costo de la reparación.</li>
+                        <li>Los menores de edad deben estar acompañados por un adulto responsable.</li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+    </script>
 </body>
 </html>
