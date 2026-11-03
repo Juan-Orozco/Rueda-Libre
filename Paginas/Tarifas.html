@@ -13,23 +13,32 @@
 
     </head>
     <body>
-        <header class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 p-3 px-md-4 text-center text-md-start">
-            <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
-                <img src="../img/images.jpg" alt="logo bicicleta" width="100">
-                <h1 class="h3 m-0"> Alquilar es conocer el mundo</h1>
+        <header>
+        <!-- navbar-expand-lg: enlaces visibles desde 992px; por debajo se colapsan tras el boton hamburguesa -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+                    <img src="../img/images.jpg" alt="" width="40" height="40" class="rounded-circle">
+                    Rueda Libre
+                </a>
+                <!-- data-bs-target debe ser igual al id del contenedor colapsable (menuPrincipal) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Mostrar u ocultar el menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="Tarifas.html">Tarifas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Reservas.html">Reservas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Tarifas.html#RutasGuiadas">Rutas</a></li>
+                    </ul>
+                </div>
             </div>
-            <nav>
-                <ul id="menu" class="d-flex flex-wrap justify-content-center gap-3 gap-md-4 list-unstyled m-0 p-0">
-                    <li> <a href="../index.html">inicio </a></li>
-                    <li> <a href="Reservas.html">Reservas </a></li>
-                    <li> <a href="Tarifas.html" class="activo">Tarifas </a></li>
-                    <li> <a href="Tarifas.html#RutasGuiadas" class="activo">Rutas </a></li>
-                </ul>
-            </nav>
-            
-        </header>
+        </nav>
+    </header>
 
         <main class="container my-4">
+            <h1 class="h2 mb-4">Alquilar es conocer el mundo</h1>
             <div class="row g-4">
                 <!-- Tablas: 12 en celular, 7 de 12 desde lg -->
                 <div class="col-12 col-lg-7">
@@ -51,7 +60,7 @@
                     </tbody>
                 </table>
                 <p>Las tarifas incluyen<strong> casco y candado.</strong> </p>
-                <a href="Reservas.html" class="boton-cta">Reservar ahora</a>
+                <a href="Reservas.html" class="btn btn-success">Reservar ahora</a>
                 <p>         </p>
                 
                 <p>             </p>
@@ -83,7 +92,7 @@
             
             <figure>
                 <p>Los recorridos salen <strong>sábados y domingos </strong>a las 7:00 a. m.  </p>
-                <a href="Reservas.html" class="boton-cta">Reservar ahora</a>
+                <a href="Reservas.html" class="btn btn-success">Reservar ahora</a>
                 <p>         </p>
                 
             </figure>
@@ -97,7 +106,7 @@
             </ol>
         </aside>
                     <figure>
-            <a href="../index.html">Visita Nuestras otras opciones</a>
+            <a href="../index.html" class="btn btn-outline-success">Visita nuestras otras opciones</a>
         </figure>
                 </div>
             </div>

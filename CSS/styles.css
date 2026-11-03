@@ -71,37 +71,61 @@ footer {
     background-color: #f9fafa;
 }
 
-#menu a {
-    text-decoration: none;
-    color: #333;
+/* ---------- Navbar: colores de la marca (Bootstrap los lee de estas variables) ---------- */
+.navbar {
+    --bs-navbar-color: #333;
+    --bs-navbar-hover-color: var(--color-Botones-Componentes);
+    --bs-navbar-active-color: var(--color-Botones-Componentes);
+    --bs-navbar-brand-color: var(--color-Titulos-Encabezados);
+    --bs-navbar-brand-hover-color: var(--color-Botones-Componentes);
 }
 
-#menu a.activo {
-    color: var(--color-Botones-Componentes);
+.navbar-brand {
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+}
+
+.navbar .nav-link.active {
     font-weight: 600;
 }
 
-#menu a:hover,
-#menu a:focus {
-    color: var(--color-Botones-Componentes);
+/* ---------- Botones de Bootstrap con los colores de la marca ----------
+   Criterio: btn-success (relleno) = accion principal (Reservar);
+             btn-outline-success (contorno) = consultar (Ver tarifas, Ver recorridos);
+             btn-warning (naranja) = destacado sobre fondo verde.
+   Tamanos: btn-lg en portada y llamadas grandes, tamano normal dentro de tarjetas. */
+.btn-success {
+    --bs-btn-bg: var(--color-Botones-Componentes);
+    --bs-btn-border-color: var(--color-Botones-Componentes);
+    --bs-btn-hover-bg: var(--color-Titulos-Encabezados);
+    --bs-btn-hover-border-color: var(--color-Titulos-Encabezados);
+    --bs-btn-active-bg: var(--color-Titulos-Encabezados);
+    --bs-btn-active-border-color: var(--color-Titulos-Encabezados);
+    --bs-btn-disabled-bg: var(--color-Botones-Componentes);
+    --bs-btn-disabled-border-color: var(--color-Botones-Componentes);
+    --bs-btn-focus-shadow-rgb: 30, 122, 79;
 }
 
-/* ---------- Boton CTA ---------- */
-.boton-cta {
-    display: inline-block;
-    padding: var(--Espaciado-pequeno) var(--Espaciado-mediano);
-    border-radius: var(--Espaciado-pequeno);
-    background-color: var(--color-Botones-Componentes);
-    color: var(--color-Fondo-general);
-    text-decoration: none;
-    font-weight: 600;
+.btn-outline-success {
+    --bs-btn-color: var(--color-Botones-Componentes);
+    --bs-btn-border-color: var(--color-Botones-Componentes);
+    --bs-btn-hover-bg: var(--color-Botones-Componentes);
+    --bs-btn-hover-border-color: var(--color-Botones-Componentes);
+    --bs-btn-active-bg: var(--color-Botones-Componentes);
+    --bs-btn-active-border-color: var(--color-Botones-Componentes);
+    --bs-btn-disabled-color: var(--color-Botones-Componentes);
+    --bs-btn-disabled-border-color: var(--color-Botones-Componentes);
+    --bs-btn-focus-shadow-rgb: 30, 122, 79;
 }
 
-/* 'a:hover' pesa mas que '.boton-cta': se fija el color tambien en hover */
-.boton-cta:hover,
-.boton-cta:focus {
-    background-color: var(--color-Titulos-Encabezados);
-    color: var(--color-Fondo-general);
+.btn-warning {
+    --bs-btn-bg: #F39A2B;
+    --bs-btn-border-color: #F39A2B;
+    --bs-btn-hover-bg: #d9861f;
+    --bs-btn-hover-border-color: #d9861f;
+    --bs-btn-active-bg: #d9861f;
+    --bs-btn-active-border-color: #d9861f;
+    --bs-btn-focus-shadow-rgb: 243, 154, 43;
 }
 
 /* ---------- Tablas (Tarifas) ---------- */
@@ -195,24 +219,6 @@ form textarea {
 form textarea {
     min-height: 6rem;
     resize: vertical;
-}
-
-form button {
-    display: inline-block;
-    margin-top: var(--Espaciado-mediano);
-    padding: var(--Espaciado-pequeno);
-    border: none;
-    border-radius: var(--Espaciado-pequeno);
-    background-color: var(--color-Botones-Componentes);
-    color: var(--color-Fondo-general);
-    font: inherit;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-form button:hover,
-form button:focus {
-    background-color: var(--color-Titulos-Encabezados);
 }
 
 /* ---------- WhatsApp flotante ---------- */

@@ -12,21 +12,32 @@
     <title>Rueda Libre | Alquiler de bicicletas en Medellín</title>
 </head>
 <body>
-    <header class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 p-3 px-md-4 text-center text-md-start">
-        <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
-            <h1 class="h3 m-0"> Rueda Libre </h1>
-        </div>
-        <nav>
-            <ul id="menu" class="d-flex flex-wrap justify-content-center gap-3 gap-md-4 list-unstyled m-0 p-0">
-                <li> <a href="index.html" class="activo">inicio </a></li>
-                <li> <a href="Paginas/Tarifas.html">Tarifas </a></li>
-                <li> <a href="Paginas/Reservas.html">Reservas </a></li>
-                <li> <a href="Paginas/Tarifas.html#RutasGuiadas">Rutas </a></li>
-            </ul>
+    <header>
+        <!-- navbar-expand-lg: enlaces visibles desde 992px; por debajo se colapsan tras el boton hamburguesa -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                    <img src="img/images.jpg" alt="" width="40" height="40" class="rounded-circle">
+                    Rueda Libre
+                </a>
+                <!-- data-bs-target debe ser igual al id del contenedor colapsable (menuPrincipal) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Mostrar u ocultar el menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Paginas/Tarifas.html">Tarifas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Paginas/Reservas.html">Reservas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Paginas/Tarifas.html#RutasGuiadas">Rutas</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
     <main class="container">
+        <h1 class="visually-hidden">Rueda Libre - Alquiler de bicicletas en Medellín</h1>
         <!-- Portada: dos columnas desde md (col-md-6), una en celular (col-12) -->
         <section class="row align-items-center g-4 py-4">
             <div class="col-12 col-md-6">
@@ -37,6 +48,12 @@
                         empieces tu camino como ciclista. Con diversas actividadades y servicios que te van a encantar y es super facil acceder a nuestra sede.
                         <a href="#Encuentranos" > Encuentranos</a>
                     </p>
+                    <!-- Criterio: btn-success (relleno) = accion principal; btn-outline-success (contorno) = consultar -->
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="Paginas/Reservas.html" class="btn btn-success btn-lg">Reservar</a>
+                        <a href="Paginas/Tarifas.html" class="btn btn-outline-success btn-lg">Ver tarifas</a>
+                        <a href="Paginas/Tarifas.html#RutasGuiadas" class="btn btn-outline-success btn-lg">Ver recorridos</a>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-md-6">
@@ -150,7 +167,7 @@
                             <h3 class="h5 mt-3">Urbana Clásica</h3>
                             <p>Cómoda y liviana para las ciclorrutas.</p>
                             <p class="fw-semibold mt-auto">$10.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="boton-cta align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -163,7 +180,7 @@
                             <h3 class="h5 mt-3">Urbana Plegable</h3>
                             <p>Se dobla en segundos; ideal para combinar con el metro.</p>
                             <p class="fw-semibold mt-auto">$12.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="boton-cta align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -176,7 +193,7 @@
                             <h3 class="h5 mt-3">Montaña Trail</h3>
                             <p>Suspensión delantera y 21 cambios para las subidas.</p>
                             <p class="fw-semibold mt-auto">$15.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="boton-cta align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -189,7 +206,7 @@
                             <h3 class="h5 mt-3">Gravel Aventura</h3>
                             <p>Para rutas mixtas de asfalto y destapado.</p>
                             <p class="fw-semibold mt-auto">$18.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="boton-cta align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -202,7 +219,7 @@
                             <h3 class="h5 mt-3">Eléctrica Urbana</h3>
                             <p>Asistencia eléctrica con 45 km de autonomía.</p>
                             <p class="fw-semibold mt-auto">$25.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="boton-cta align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -215,7 +232,7 @@
                             <h3 class="h5 mt-3">Infantil</h3>
                             <p>Para niños de 6 a 10 años.</p>
                             <p class="fw-semibold mt-auto">$8.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="boton-cta align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -228,7 +245,7 @@
                             <h3 class="h5 mt-3">Tándem</h3>
                             <p>Para dos personas; perfecta para pasear en pareja.</p>
                             <p class="fw-semibold mt-auto">$20.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="boton-cta align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -274,7 +291,7 @@
         <section class="bg-success text-white rounded-3 p-4 my-5 d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3">
             <img src="img/images.jpg" alt="" class="d-none d-md-block rounded-circle" width="80" height="80">
             <p class="fs-3 fw-bold mb-0 text-center text-md-start">¿Listo para rodar?</p>
-            <a href="Paginas/Reservas.html" class="bg-warning text-dark fw-bold px-4 py-2 rounded-pill text-decoration-none">Reservar ahora</a>
+            <a href="Paginas/Reservas.html" class="btn btn-warning btn-lg fw-bold">Reservar ahora</a>
         </section>
 
         <section>
@@ -291,7 +308,7 @@
                 <li> Disfruta de tu bicicleta</li>
             </ol>
 
-            <a href="Paginas/Tarifas.html#Tablas_recorridos"> Empieza tu aventura hoy mismo!</a>
+            <a href="Paginas/Tarifas.html#Tablas_recorridos" class="btn btn-success btn-lg">Empieza tu aventura hoy mismo!</a>
                     
             <p> 
             Beneficiate de nuestros servicios y vive la experiencia de recorrer Medellín en bicicleta:  

@@ -13,21 +13,32 @@
     <title>Reservas - Rueda Libre</title>
 </head>
 <body>
-    <header class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 p-3 px-md-4 text-center text-md-start">
-        <div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
-            <h1 class="h3 m-0"> Reserva tu bicicleta</h1>
-        </div>
-        <nav>
-            <ul id="menu" class="d-flex flex-wrap justify-content-center gap-3 gap-md-4 list-unstyled m-0 p-0">
-                <li> <a href="../index.html">inicio </a></li>
-                <li> <a href="Reservas.html" class="activo">Reservas </a></li>
-                <li> <a href="Tarifas.html">Tarifas </a></li>
-                <li> <a href="Tarifas.html#RutasGuiadas">Rutas </a></li>
-            </ul>
+    <header>
+        <!-- navbar-expand-lg: enlaces visibles desde 992px; por debajo se colapsan tras el boton hamburguesa -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+                    <img src="../img/images.jpg" alt="" width="40" height="40" class="rounded-circle">
+                    Rueda Libre
+                </a>
+                <!-- data-bs-target debe ser igual al id del contenedor colapsable (menuPrincipal) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Mostrar u ocultar el menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Tarifas.html">Tarifas</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="Reservas.html">Reservas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Tarifas.html#RutasGuiadas">Rutas</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
     <main class="container my-4">
+        <h1 class="h2 mb-4">Reserva tu bicicleta</h1>
         <div class="row g-4">
         <!-- Formulario: 12 en celular, 8 de 12 desde md -->
         <div class="col-12 col-md-8">
@@ -106,7 +117,7 @@
 
                 <br><br>
 
-                <button type="submit">Inscribirme</button>
+                <button type="submit" class="btn btn-success btn-lg">Inscribirme</button>
                 
 
             </fieldset>
