@@ -73,4 +73,12 @@ De Tarifas.html:
 Semana 2 
 Dia1 
 Estrecha poco a poco la ventana del navegador y describe en la bitácora qué ocurre:
-    - Como agregamos
+    Encabezado:
+    - Ventana ancha (1200px): el nombre del negocio queda a la izquierda y el menu a la derecha, alineados al centro vertical.
+    - Al estrechar (700px): los enlaces del menu siguen en una fila mientras quepan.
+    - Muy estrecha (360px): el menu baja a una segunda linea (flex-wrap) en vez de salirse de la pantalla;
+      el menu pasa debajo del nombre y los enlaces que no caben bajan de linea.
+    Pie:
+    - Ventana ancha: los tres bloques (marca, contacto y horario) quedan en fila, alineados por arriba.
+    - Al estrechar: los bloques bajan uno debajo de otro cuando ya no caben en la fila, sin desbordarse.
+    - Con flex-wrap y gap todo se acomoda solo, sin media queries.

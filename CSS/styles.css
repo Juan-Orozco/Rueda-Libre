@@ -86,8 +86,7 @@ aside {
     color: var(--color-Botones-Componentes);
 }
 
-   BOToN CTA
-
+/* BOTÓN CTA */
 .boton-cta {
     display: inline-block;
     padding: var(--Espaciado-pequeno) var(--Espaciado-mediano);
@@ -300,35 +299,58 @@ form button:focus {
     background-color: #128c7e; /* Un verde más oscuro */
 }
 
-/* Semana 2 Dia1*/
+/* Semana 2 Dia1: Flexbox en encabezado, menú y pie */
 
-.encabezado {
+/* Encabezado: marca en un extremo, menú en el otro, centrados verticalmente */
+header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;  
-
-    padding: 20px 40px;           /* Espaciado interno opcional para que no toquen los bordes de la pantalla */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--Espaciado-mediano);
+    padding: var(--Espaciado-mediano) var(--Espaciado-grande);
     background-color: #f9fafa;
-
 }
 
+/* Logo + título juntos, para que el encabezado siga teniendo 2 bloques */
+.marca {
+    display: flex;
+    align-items: center;
+    gap: var(--Espaciado-mediano);
+}
+
+.marca h1 {
+    margin: 0;
+}
+
+/* Menú: lista flexible, enlaces separados con gap, bajan de línea si no caben */
 #menu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem;                    /* Separa los enlaces entre sí por 20px */
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--Espaciado-grande);
 }
 
 #menu a {
-  text-decoration: none;
-  color: #333;
+    text-decoration: none;
+    color: #333;
 }
 
-.pie{
+/* Pie: tres bloques en fila, alineados por arriba, separados de forma uniforme */
+footer {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 4rem  ;
-    justify-content: flex-start;
-
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--Espaciado-grande);
     background-color: #f9fafa;
+}
 
+footer > div {
+    flex: 1 1 12rem;
+}
+
+footer p {
+    margin: 0;
 }
