@@ -82,3 +82,55 @@ Estrecha poco a poco la ventana del navegador y describe en la bitácora qué oc
     - Ventana ancha: los tres bloques (marca, contacto y horario) quedan en fila, alineados por arriba.
     - Al estrechar: los bloques bajan uno debajo de otro cuando ya no caben en la fila, sin desbordarse.
     - Con flex-wrap y gap todo se acomoda solo, sin media queries.
+
+
+Semana 2
+Dia 2 - Nuestra flota (Grid + Flexbox)
+    Columnas observadas con 7 tarjetas (modo dispositivo de DevTools):
+    - 1280 px -> 4 columnas (4 tarjetas arriba y 3 abajo)
+    - 900 px  -> 3 columnas
+    - 500 px  -> 1 columna
+    Sin media queries: repeat(auto-fit, minmax(16rem, 1fr)) calcula las columnas solo.
+    Agregar el septimo modelo (Tandem) no necesito tocar el CSS, la cuadricula lo acomodo sola.
+    Todas las tarjetas de una fila miden lo mismo y el boton "Reservar" queda alineado abajo.
+
+
+Dia 3 - Layout general: Flexbox o Grid?
+    Criterio: Flexbox = una dimension (una fila o una columna). Grid = dos dimensiones (filas y columnas a la vez).
+
+    1. Portada -> Grid. Son dos columnas iguales (texto y foto) con repeat(auto-fit, minmax(18rem, 1fr)).
+       Es una estructura de columnas, y align-items: center centra el texto verticalmente.
+    2. Galeria "Nuestras rutas" -> Grid. Tres tarjetas del mismo tamano en una cuadricula;
+       repeat() + minmax() + 1fr hacen que las columnas se repartan el ancho por igual.
+    3. Reservas (formulario y contacto) -> Grid con 2fr 1fr. Dos columnas con proporcion fija 2:1;
+       fr reparte el espacio sin porcentajes ni px.
+    4. Fila del formulario (documento y celular) -> Flexbox. Solo hay una fila con dos campos:
+       una dimension. flex: 1 en cada campo y gap para separarlos.
+    5. Encabezado -> Flexbox. Una sola fila: nombre a un lado y menu al otro (justify-content: space-between).
+    6. Pie -> Flexbox. Una sola fila con tres bloques alineados por arriba que se reparten el espacio.
+
+
+Dia 4 - Mobile-first (v1.5)
+    Estructura de styles.css: lo que no esta en una media query es el celular (1 columna);
+    @media (min-width: 768px) = tablet; @media (min-width: 1200px) = escritorio.
+
+    Resultado probado (modo dispositivo):
+        Ancho   Encabezado          Pie        Portada  Rutas  Flota  Reservas
+        360     columna (centrado)  columna    1        1      1      1
+        768     fila                fila       2        3      2      2 (2fr 1fr)
+        1280    fila                fila       2        3      4      2 (2fr 1fr)
+    A 360 px no hay scroll horizontal en ninguna de las 4 paginas y ninguna imagen se sale.
+
+    Problemas encontrados y como los resolvi:
+    1. Las tablas de Tarifas hacian scroll lateral en el celular (la pagina medía 518px en una pantalla de 360).
+       Solucion: en el estilo base, letra de 0.8rem, relleno pequeno y overflow-wrap: anywhere en th/td;
+       desde 768px vuelven la letra y el relleno normales.
+    2. En Reservas el formulario y el contacto en 2fr 1fr quedaban muy apretados en el celular.
+       Solucion: la base es una sola columna (1fr) y 2fr 1fr se activa solo desde 768px.
+    3. El encabezado en una fila dejaba el nombre y el menu sin espacio en el celular.
+       Solucion: en el celular van en columna y centrados (nombre arriba, menu debajo);
+       desde 768px se recupera la fila del MiniReto 1 (space-between).
+    4. La portada tenia min-height: 70vh tambien en el celular y dejaba un hueco vacio enorme.
+       Solucion: el min-height solo se aplica desde 768px.
+    5. Antes usaba una media query con max-width (desktop-first) para Reservas.
+       Solucion: la cambie a min-width, para que lo basico describa el celular.

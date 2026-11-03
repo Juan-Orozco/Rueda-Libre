@@ -1,3 +1,16 @@
+/* ==========================================================
+   Rueda Libre v1.5 — enfoque mobile-first
+   1. Variables y base
+   2. Encabezado y menú
+   3. Componentes (botón, tarjetas, tablas, formulario)
+   4. Secciones (portada, rutas, flota, reservas)
+   5. Pie y WhatsApp
+   6. Tablet  (min-width: 768px)
+   7. Escritorio (min-width: 1200px)
+   Los estilos sin media query describen el celular (1 columna).
+   ========================================================== */
+
+/* ---------- 1. Variables y base ---------- */
 :root {
     --color-Titulos-Encabezados: #14213D;
     --color-Botones-Componentes: #1E7A4F;
@@ -15,6 +28,7 @@
     --fuente-titulos: 'Montserrat', sans-serif;
     --fuente-parrafos: 'Open Sans', sans-serif;
 }
+
 *,
 *::before,
 *::after {
@@ -40,16 +54,6 @@ img {
     height: auto;
 }
 
-header,
-footer {
-    padding: var(--Espaciado-mediano);
-}
-
-footer {
-    margin-top: var(--Espaciado-grande);
-    border-top: 1px solid var(--color-Texto-Secundario);
-}
-
 main,
 aside {
     width: 100%;
@@ -57,24 +61,49 @@ aside {
     margin: 0 auto;
     padding: 0 var(--Espaciado-mediano);
 }
-/* Portada de inicio: altura mínima relativa a la ventana */
-.portada {
-    min-height: 70vh;
 
-}
-.qs {
-    margin-bottom: var(--Espaciado-grande);
+/* ---------- 2. Encabezado y menú ---------- */
+
+/* Móvil: nombre arriba y menú debajo, centrados */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--Espaciado-mediano);
     padding: var(--Espaciado-mediano);
-    border: 1px solid var(--color-Texto-Secundario);
-    border-radius: var(--Espaciado-pequeno);
+    background-color: #f9fafa;
+    text-align: center;
 }
 
+/* Logo + título juntos, para que el encabezado siga teniendo 2 bloques */
+.marca {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--Espaciado-mediano);
+}
+
+.marca h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Menú: lista flexible, enlaces separados con gap, bajan de línea si no caben */
 #menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--Espaciado-mediano) var(--Espaciado-grande);
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
+#menu a {
+    text-decoration: none;
+    color: #333;
+}
 
 #menu a.activo {
     color: var(--color-Botones-Componentes);
@@ -86,7 +115,9 @@ aside {
     color: var(--color-Botones-Componentes);
 }
 
-/* BOTÓN CTA */
+/* ---------- 3. Componentes ---------- */
+
+/* Botón CTA */
 .boton-cta {
     display: inline-block;
     padding: var(--Espaciado-pequeno) var(--Espaciado-mediano);
@@ -102,27 +133,74 @@ aside {
     background-color: var(--color-Titulos-Encabezados);
 }
 
+/* Tarjetas de servicio y bloque "¿Quiénes somos?" */
+.qs {
+    margin-bottom: var(--Espaciado-grande);
+    padding: var(--Espaciado-mediano);
+    border: 1px solid var(--color-Texto-Secundario);
+    border-radius: var(--Espaciado-pequeno);
+}
 
 .servicio {
-    width: 100%;                                 
+    width: 100%;
     padding: var(--Espaciado-mediano);
     border: 1px solid var(--color-Texto-Secundario);
     border-radius: var(--Espaciado-pequeno);
     margin-bottom: var(--Espaciado-grande);
 }
 
-/* Imagen al ancho completo de la tarjeta */
 .servicio img {
     display: block;
     width: 100%;
     height: auto;
 }
 
+.SeprarIndex fieldset {
+    margin: 0 0 var(--Espaciado-grande);
+    padding: var(--Espaciado-mediano);
+    border: 1px solid var(--color-Texto-Secundario);
+    border-radius: var(--Espaciado-pequeno);
+}
 
+/* Tipos de bicicletas */
+.tarjetas-bicicletas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--Espaciado-mediano);
+}
+
+.tarjeta-bicicleta {
+    position: relative;
+    flex: 1 1 200px;
+    padding: var(--Espaciado-mediano);
+    border: 1px solid var(--color-Texto-Secundario);
+    border-radius: 8px;
+}
+
+.tarjeta-bicicleta img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    border-radius: 4px;
+}
+
+.etiqueta-nuevo {
+    position: absolute;
+    top: var(--Espaciado-pequeno);
+    right: var(--Espaciado-pequeno);
+    padding: 0.25rem var(--Espaciado-pequeno);
+    border-radius: 4px;
+    background-color: var(--color-Titulos-Encabezados);
+    color: var(--color-Fondo-general);
+    font-weight: 600;
+}
+
+/* Tablas: móvil con letra y relleno pequeños para leerse sin scroll lateral */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: var(--Espaciado-grande);
+    font-size: 0.8rem;
 }
 
 caption {
@@ -132,9 +210,10 @@ caption {
 
 th,
 td {
-    padding: var(--Espaciado-pequeno) var(--Espaciado-mediano);
+    padding: 0.25rem 0.35rem;
     border: 1px solid var(--color-Texto-Secundario);
     text-align: left;
+    overflow-wrap: anywhere;
 }
 
 /* Encabezados de columna con color de marca (contraste ~15:1) */
@@ -143,12 +222,11 @@ thead th {
     color: var(--color-Fondo-general);
 }
 
-/* Encabezados de fila: solo en negrita, sin fondo */
 tbody th {
     font-weight: 600;
 }
 
-  /*. FORMULARIO*/
+/* Formulario */
 form {
     width: 100%;
     max-width: 100rem;
@@ -201,10 +279,8 @@ form textarea {
     resize: vertical;
 }
 
-/* Separación entre grupos de opciones */
 .grupo-opciones {
     margin-bottom: var(--Espaciado-pequeno);
-    
 }
 
 .grupo-opciones p {
@@ -215,7 +291,7 @@ form textarea {
 form button {
     display: inline-block;
     margin-top: var(--Espaciado-mediano);
-    padding: var(--Espaciado-pequeno) var(--Espaciado-pequeno);
+    padding: var(--Espaciado-pequeno);
     border: none;
     border-radius: var(--Espaciado-pequeno);
     background-color: var(--color-Botones-Componentes);
@@ -230,127 +306,238 @@ form button:focus {
     background-color: var(--color-Titulos-Encabezados);
 }
 
-/*    Separar          */
+/* Fila del formulario: móvil en columna (Flexbox) */
+.fila-campos {
+    display: flex;
+    flex-direction: column;
+}
 
-.SeprarIndex fieldset {
-    margin-bottom: var(--Espaciado-grande);
+.fila-campos .campo {
+    flex: 1;
+}
+
+/* ---------- 4. Secciones ---------- */
+
+/* Portada: móvil en una columna (texto y luego foto) */
+.portada {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: var(--Espaciado-grande);
+}
+
+.portada-texto {
     padding: var(--Espaciado-mediano);
     border: 1px solid var(--color-Texto-Secundario);
     border-radius: var(--Espaciado-pequeno);
 }
-/* Contenedor: tarjetas en fila */
-.tarjetas-bicicletas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--Espaciado-mediano);
-}
 
-/* Cada tarjeta en su cajón */
-.tarjeta-bicicleta {
-  position: relative;
-  flex: 1 1 200px;
-  padding: var(--Espaciado-mediano);
-  border: 1px solid var(--color-Texto-Secundario);
-  border-radius: 8px;
-}
-
-/* Imágenes que no se salen de la tarjeta */
-.tarjeta-bicicleta img {
-  display: block;
-  max-width: 100%;
-  border-radius: 4px;
-}
-
-/* Etiqueta "Nuevo" flotando sobre la tarjeta */
-.etiqueta-nuevo {
-  position: absolute;
-  top: var(--Espaciado-pequeno);
-  right: var(--Espaciado-pequeno);
-  padding: 0.25rem var(--Espaciado-pequeno);
-  border-radius: 4px;
-  background-color: var(--color-Titulos-Encabezados);
-  color: var(--color-Fondo-general);
-  font-weight: 600;
-}
-
-.tarjeta-bicicleta img{
-    width: 100%;
-    height: 180px ;
+.portada img {
     display: block;
-
-}
-.whatsapp {
-    position: fixed;
-    bottom: 20px;       /* Distancia desde la parte inferior */
-    right: 20px;        /* Distancia desde la derecha */
-    padding: 12px 20px; /* Tamaño del botón */
-    background-color: #25d366; /* Verde oficial de WhatsApp */
-    color: #ffffff;     /* Color del texto */
-    font-weight: bold;
-    text-decoration: none; /* Quita el subrayado del enlace */
-    border-radius: 30px; /* Bordes redondeados para que parezca botón */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
-    z-index: 9999;      /* Asegura que quede por encima de todo el contenido */
-    transition: background-color 0.3s ease; /* Efecto suave al pasar el mouse */
+    width: 100%;
+    border-radius: var(--Espaciado-pequeno);
 }
 
-/* Efecto visual al pasar el cursor sobre el botón */
-.whatsapp:hover {
-    background-color: #128c7e; /* Un verde más oscuro */
-}
-
-/* Semana 2 Dia1: Flexbox en encabezado, menú y pie */
-
-/* Encabezado: marca en un extremo, menú en el otro, centrados verticalmente */
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--Espaciado-mediano);
-    padding: var(--Espaciado-mediano) var(--Espaciado-grande);
-    background-color: #f9fafa;
-}
-
-/* Logo + título juntos, para que el encabezado siga teniendo 2 bloques */
-.marca {
-    display: flex;
-    align-items: center;
+/* Galería de rutas: móvil en una columna */
+.galeria-rutas {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: var(--Espaciado-mediano);
 }
 
-.marca h1 {
+.ruta {
+    padding: var(--Espaciado-mediano);
+    border: 1px solid var(--color-Texto-Secundario);
+    border-radius: var(--Espaciado-pequeno);
+}
+
+.ruta img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.ruta h3 {
+    margin: var(--Espaciado-mediano) 0 var(--Espaciado-pequeno);
+}
+
+.ruta p {
     margin: 0;
 }
 
-/* Menú: lista flexible, enlaces separados con gap, bajan de línea si no caben */
-#menu {
+/* Flota: tantas columnas de mínimo 16rem como quepan (1 en móvil), sin media queries */
+.flota-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: var(--Espaciado-mediano);
+}
+
+/* Tarjeta: caja de la semana 1 (relleno, borde, esquinas) + Flexbox en columna */
+.tarjeta-flota {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--Espaciado-mediano);
+    border: 1px solid var(--color-Texto-Secundario);
+    border-radius: var(--Espaciado-pequeno);
+}
+
+.tarjeta-flota img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.tarjeta-flota h3 {
+    margin: var(--Espaciado-mediano) 0 var(--Espaciado-pequeno);
+}
+
+/* La descripción absorbe el espacio libre: empuja precio y enlace al final */
+.tarjeta-flota .descripcion {
+    flex-grow: 1;
+    margin: 0 0 var(--Espaciado-pequeno);
+}
+
+.tarjeta-flota .precio {
+    margin: 0 0 var(--Espaciado-mediano);
+    font-weight: 600;
+}
+
+.tarjeta-flota .boton-cta {
+    align-self: flex-start;
+}
+
+/* Reservas: móvil en una columna (formulario y luego contacto) */
+.reservas-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
     gap: var(--Espaciado-grande);
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 0 var(--Espaciado-mediano);
 }
 
-#menu a {
-    text-decoration: none;
-    color: #333;
+/* main y aside se ajustan a su columna */
+.reservas-layout main,
+.reservas-layout aside {
+    max-width: none;
+    padding: 0;
 }
 
-/* Pie: tres bloques en fila, alineados por arriba, separados de forma uniforme */
+/* ---------- 5. Pie y WhatsApp ---------- */
+
+/* Móvil: los tres bloques apilados */
 footer {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--Espaciado-grande);
+    flex-direction: column;
+    gap: var(--Espaciado-mediano);
+    margin-top: var(--Espaciado-grande);
+    padding: var(--Espaciado-mediano);
+    border-top: 1px solid var(--color-Texto-Secundario);
     background-color: #f9fafa;
-}
-
-footer > div {
-    flex: 1 1 12rem;
 }
 
 footer p {
     margin: 0;
+}
+
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background-color: #25d366;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    transition: background-color 0.3s ease;
+}
+
+.whatsapp:hover {
+    background-color: #128c7e;
+}
+
+/* ---------- 6. Tablet: desde 768px ---------- */
+@media (min-width: 768px) {
+    /* Encabezado: nombre a un extremo, menú al otro (distribución del MiniReto 1) */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: var(--Espaciado-mediano) var(--Espaciado-grande);
+        text-align: left;
+    }
+
+    .marca {
+        justify-content: flex-start;
+    }
+
+    .marca h1 {
+        font-size: 2rem;
+    }
+
+    /* Pie: tres bloques en fila, alineados por arriba */
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: var(--Espaciado-grande);
+    }
+
+    footer > div {
+        flex: 1;
+    }
+
+    /* Portada: dos columnas iguales, texto centrado verticalmente */
+    .portada {
+        grid-template-columns: 1fr 1fr;
+        min-height: 70vh;
+    }
+
+    /* Rutas: tres tarjetas en una fila */
+    .galeria-rutas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Reservas: formulario 2fr, contacto 1fr */
+    .reservas-layout {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    /* Documento y celular lado a lado */
+    .fila-campos {
+        flex-direction: row;
+        gap: var(--Espaciado-mediano);
+    }
+
+    /* Tablas: letra y relleno normales */
+    table {
+        font-size: 1rem;
+    }
+
+    th,
+    td {
+        padding: var(--Espaciado-pequeno) var(--Espaciado-mediano);
+    }
+}
+
+/* ---------- 7. Escritorio: desde 1200px ---------- */
+@media (min-width: 1200px) {
+    /* Más aire a los lados del encabezado y el pie */
+    header,
+    footer {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .portada {
+        gap: 4rem;
+    }
 }
