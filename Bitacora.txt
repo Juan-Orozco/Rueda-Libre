@@ -292,3 +292,47 @@ Dia 6 - MiniReto 11: formulario con validacion visual, alerta y modal (Reservas)
     el textarea repetia id y name "nombre" (ahora "observaciones") y action="gracias.html" no coincidia con Gracias.html
     (en GitHub Pages las mayusculas importan, daria error 404).
     Conflicto con Bootstrap: mis reglas form input / form label pisaban .form-control y los estilos de validacion; las borre de styles.css.
+
+
+Dia 6 - MiniReto 12: Rueda Libre v2.0 con identidad propia
+    Variables de Bootstrap sobrescritas en styles.css (despues de bootstrap.min.css, sin forzar reglas):
+        --bs-primary y --bs-primary-rgb = Verde Ruta (#1E7A4F, 30 122 79); --bs-link-color(-rgb) y hover; --bs-body-font-family (Open Sans);
+        --bs-heading-color (Azul Noche); --bs-border-radius (0.5rem); --bs-border-color (Gris Asfalto); --bs-form-invalid-color.
+    Con eso bg-primary, text-primary, los enlaces y los botones principales muestran los colores de marca y no el azul por defecto.
+    Botones: .btn-primary y .btn-outline-primary con variables --bs-btn-* (hover y active en verdes mas oscuros);
+    variante propia .btn-pedal (Naranja Pedal #F39A2B con texto Azul Noche, contraste 7.2:1).
+    Clases propias que complementan a Bootstrap: .titulo-seccion (titulos), .portada-marca (portada), .pie-marca (pie) e .icono-marca (iconos).
+    Bootstrap Icons 1.11.3 por CDN (con integrity): navbar, datos de contacto (telefono, correo, ubicacion, horario), beneficios,
+    pie y enlace de WhatsApp. Todos los iconos son decorativos (aria-hidden="true") porque siempre van junto a un texto;
+    los botones que solo llevan icono (hamburguesa, cerrar y flechas del carrusel) tienen aria-label o texto visually-hidden.
+    Lista de errores comunes: 0 !important en styles.css, 0 clases ni atributos de Bootstrap 4 (ml-, mr-, data-toggle, etc.),
+    hoja propia despues de Bootstrap en las 4 paginas, bundle 1 sola vez por pagina, todas las grillas con container > row > col.
+    Se encontro una col fuera de row (cantidad de bicicletas en Reservas) y se envolvio en un row.
+    Contraste (todos los textos visibles >= 4.5:1, medido con un script en las 4 paginas):
+        blanco sobre Verde Ruta 5.3:1; Azul Noche sobre Naranja Pedal 7.2:1; crema sobre Azul Noche 14.8:1 (pie);
+        enlaces verdes sobre crema 4.9:1. Dos hallazgos arreglados: el texto blanco del boton de WhatsApp sobre su verde daba 2:1
+        (ahora Azul Noche, 8:1) y el rojo de los errores del formulario daba 4.2:1 sobre el crema (ahora #b02a37, 6:1).
+    Conflictos resueltos: el foco de los campos y las casillas marcadas eran azul fijo de Bootstrap (se cambio a verde con la
+    misma especificidad y gana por ir despues); mis reglas a/a:hover quedaron innecesarias porque ahora lo resuelve --bs-link-color.
+    Otros arreglos: el enlace de correo de inicio decia "mailito:" (ahora "mailto:").
+    Pruebas: 360 / 768 / 1280 px en las 4 paginas sin scroll horizontal, imagenes dentro de su contenedor y fuente de iconos cargada;
+    menu con mouse y teclado (reto 9), carrusel y modal con teclado (retos 10 y 11).
+    Capturas: img/capturas/antes-inicio.png y img/capturas/despues-inicio.png (inicio a 1280 px).
+    Pendiente (lo hace la persona): commit de lanzamiento y publicar GitHub Pages (v2.0), y abrir la URL en un celular real.
+
+RESUMEN DE LA SEMANA (Rueda Libre v1.0 -> v2.0)
+    Retos 1-4: Flexbox, Grid y mobile-first con CSS propio (v1.5, 543 lineas de CSS).
+    Retos 5-8: misma base con Bootstrap; comparativa 543 -> 237 lineas (56 % menos) y v2.0-beta.
+    Retos 9-11: navbar colapsable, botones unificados, cards, carrusel, validacion visual, alerta y modal.
+    Reto 12: identidad de marca con variables, botones, clases propias e iconos. Lo mas dificil: entender la cascada
+    (especificidad y orden) para que mis estilos y los de Bootstrap no se pisaran. Lo que mas ayudo: cambiar variables --bs-*
+    en vez de pelear con las reglas de Bootstrap.
+
+
+Ajuste final de estetica: "Como alquilar", "Encuentranos", "Que llevar" y horarios
+    Inicio: "Como alquilar" con los pasos numerados en circulos verdes (.insignia-marca) y una tarjeta de beneficios con iconos;
+    "Encuentranos" con una tarjeta de contacto (telefono, correo, ubicacion) con botones "Como llegar" y "Escribenos", y la foto de la tienda.
+    Tarifas: "Salidas de los recorridos" y "Que llevar" ahora son tarjetas con iconos; la tabla de recorridos tiene el id Tablas_recorridos
+    (antes los enlaces apuntaban a un id que no existia). Reservas: el horario de atencion tambien es una tarjeta.
+    Tablas: con pantallas anchas las palabras ya no se parten ("Distanci-a"); la regla overflow-wrap: anywhere queda solo en el celular.
+    Textos corregidos de paso: "Acercate", "variadades" y "seguriad total mente"; "Encuentranos" ahora lleva tilde.

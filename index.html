@@ -5,6 +5,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" integrity="sha384-XGjxtQfXaH2tnPFa9x+ruJTuLE3Aa6LhHSWRr1XeTyhezb4abCG4ccI5AkVDxqC+" crossorigin="anonymous">
     <!-- Nuestra hoja va DESPUES de Bootstrap: si hay empate de especificidad, gana la ultima -->
     <link rel="stylesheet" href="CSS/styles.css">
     <meta charset="UTF-8">
@@ -26,10 +27,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Paginas/Tarifas.html">Tarifas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Paginas/Reservas.html">Reservas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Paginas/Tarifas.html#RutasGuiadas">Rutas</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html"><i class="bi bi-house-door" aria-hidden="true"></i> Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Paginas/Tarifas.html"><i class="bi bi-tag" aria-hidden="true"></i> Tarifas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Paginas/Reservas.html"><i class="bi bi-calendar-check" aria-hidden="true"></i> Reservas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Paginas/Tarifas.html#RutasGuiadas"><i class="bi bi-signpost-2" aria-hidden="true"></i> Rutas</a></li>
                     </ul>
                 </div>
             </div>
@@ -52,7 +53,7 @@
                     <div class="ratio ratio-16x9">
                         <img src="img/Urb.jpeg" class="d-block w-100 object-fit-cover" alt="Bicicleta urbana de Rueda Libre, protagonista de la promoción de los martes">
                     </div>
-                    <div class="bg-success text-white text-center px-3 pt-3 pb-5">
+                    <div class="bg-primary text-white text-center px-3 pt-3 pb-5">
                         <p class="fs-5 fw-bold mb-0">Martes 2x1 en bicicletas urbanas</p>
                     </div>
                 </div>
@@ -60,7 +61,7 @@
                     <div class="ratio ratio-16x9">
                         <img src="img/Elec.jpeg" class="d-block w-100 object-fit-cover" alt="Bicicleta eléctrica de Rueda Libre, con 20 % de descuento de lunes a jueves">
                     </div>
-                    <div class="bg-success text-white text-center px-3 pt-3 pb-5">
+                    <div class="bg-primary text-white text-center px-3 pt-3 pb-5">
                         <p class="fs-5 fw-bold mb-0">20 % de descuento en eléctricas de lunes a jueves</p>
                     </div>
                 </div>
@@ -68,7 +69,7 @@
                     <div class="ratio ratio-16x9">
                         <img src="img/ubicam.jpg" class="d-block w-100 object-fit-cover" alt="Grupo de ciclistas en una ruta guiada, gratis para quien cumple años">
                     </div>
-                    <div class="bg-success text-white text-center px-3 pt-3 pb-5">
+                    <div class="bg-primary text-white text-center px-3 pt-3 pb-5">
                         <p class="fs-5 fw-bold mb-0">Si cumples años, el recorrido guiado es gratis</p>
                     </div>
                 </div>
@@ -87,18 +88,18 @@
         <!-- Portada: dos columnas desde md (col-md-6), una en celular (col-12) -->
         <section class="row align-items-center g-4 py-4">
             <div class="col-12 col-md-6">
-                <div class="border rounded p-3">
-                    <h2> ¿Quiénes somos?</h2>
+                <div class="portada-marca p-3">
+                    <h2 class="titulo-seccion">¿Quiénes somos?</h2>
                     <p>
                         Mas que una empresa somos una comunudad apasionada por el ciclismo, con el objetivo de promover este amor por el deporte te brindamos todo el acompañamiento para que
                         empieces tu camino como ciclista. Con diversas actividadades y servicios que te van a encantar y es super facil acceder a nuestra sede.
-                        <a href="#Encuentranos" > Encuentranos</a>
+                        <a href="#Encuentranos">Encuéntranos</a>
                     </p>
-                    <!-- Criterio: btn-success (relleno) = accion principal; btn-outline-success (contorno) = consultar -->
+                    <!-- Criterio: btn-primary (relleno) = accion principal; btn-outline-primary (contorno) = consultar -->
                     <div class="d-flex flex-wrap gap-2">
-                        <a href="Paginas/Reservas.html" class="btn btn-success btn-lg">Reservar</a>
-                        <a href="Paginas/Tarifas.html" class="btn btn-outline-success btn-lg">Ver tarifas</a>
-                        <a href="Paginas/Tarifas.html#RutasGuiadas" class="btn btn-outline-success btn-lg">Ver recorridos</a>
+                        <a href="Paginas/Reservas.html" class="btn btn-primary btn-lg">Reservar</a>
+                        <a href="Paginas/Tarifas.html" class="btn btn-outline-primary btn-lg">Ver tarifas</a>
+                        <a href="Paginas/Tarifas.html#RutasGuiadas" class="btn btn-outline-primary btn-lg">Ver recorridos</a>
                     </div>
                 </div>
             </div>
@@ -109,7 +110,7 @@
 
         <!-- Rutas: 1 columna en celular, 3 desde md -->
         <section id="rutas" class="my-4">
-            <h2> Nuestras rutas</h2>
+            <h2 class="titulo-seccion">Nuestras rutas</h2>
             <!-- Rutas: 1 card por fila en celular, 3 desde md; h-100 iguala la altura de las cards de una fila -->
             <div class="row g-3">
                 <div class="col-12 col-md-4">
@@ -153,7 +154,7 @@
 
         <section class="my-4">
 
-            <h2> Nuestros servicios</h2>
+            <h2 class="titulo-seccion">Nuestros servicios</h2>
             <fieldset class="border rounded p-3 mb-4">
                 <article>
                     <h3> Alquiler de bicicletas</h3>
@@ -224,7 +225,7 @@
 
         <!-- Flota: 1 columna en celular, 2 desde sm, 3 desde lg y 4 desde xl -->
         <section id="flota" class="my-4">
-            <h2>Nuestra flota</h2>
+            <h2 class="titulo-seccion">Nuestra flota</h2>
             <div class="row g-3">
                 <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
                     <article class="card h-100">
@@ -235,7 +236,7 @@
                             <h3 class="card-title h5">Urbana Clásica</h3>
                             <p class="card-text">Cómoda y liviana para las ciclorrutas.</p>
                             <p class="fw-semibold mt-auto">$10.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-primary align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -248,7 +249,7 @@
                             <h3 class="card-title h5">Urbana Plegable</h3>
                             <p class="card-text">Se dobla en segundos; ideal para combinar con el metro.</p>
                             <p class="fw-semibold mt-auto">$12.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-primary align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -261,7 +262,7 @@
                             <h3 class="card-title h5">Montaña Trail</h3>
                             <p class="card-text">Suspensión delantera y 21 cambios para las subidas.</p>
                             <p class="fw-semibold mt-auto">$15.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-primary align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -274,7 +275,7 @@
                             <h3 class="card-title h5">Gravel Aventura</h3>
                             <p class="card-text">Para rutas mixtas de asfalto y destapado.</p>
                             <p class="fw-semibold mt-auto">$18.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-primary align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -287,7 +288,7 @@
                             <h3 class="card-title h5">Eléctrica Urbana</h3>
                             <p class="card-text">Asistencia eléctrica con 45 km de autonomía.</p>
                             <p class="fw-semibold mt-auto">$25.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-primary align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -300,7 +301,7 @@
                             <h3 class="card-title h5">Infantil</h3>
                             <p class="card-text">Para niños de 6 a 10 años.</p>
                             <p class="fw-semibold mt-auto">$8.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-primary align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -313,7 +314,7 @@
                             <h3 class="card-title h5">Tándem</h3>
                             <p class="card-text">Para dos personas; perfecta para pasear en pareja.</p>
                             <p class="fw-semibold mt-auto">$20.000 por hora</p>
-                            <a href="Paginas/Reservas.html" class="btn btn-success align-self-start">Reservar</a>
+                            <a href="Paginas/Reservas.html" class="btn btn-primary align-self-start">Reservar</a>
                         </div>
                     </article>
                 </div>
@@ -322,103 +323,143 @@
 
         <!-- Beneficios: 1 columna en celular, 2 desde sm, 4 desde lg -->
         <section class="my-5">
-            <h2 class="text-center mb-4">¿Por qué Rueda Libre?</h2>
+            <h2 class="titulo-seccion text-center mb-4">¿Por qué Rueda Libre?</h2>
             <div class="row g-3">
                 <div class="col-12 col-sm-6 col-lg-3">
                     <article class="h-100 p-4 bg-white border rounded-3">
+                        <i class="bi bi-tools fs-2 text-primary d-block mb-2" aria-hidden="true"></i>
                         <h3 class="fs-5 fw-semibold text-primary-emphasis mb-2">Bicicletas revisadas</h3>
                         <p class="text-secondary mb-3">Revisamos frenos, llantas y cambios en cada alquiler para que ruedes tranquilo.</p>
-                        <p class="fs-4 fw-bold text-success mb-0">100% revisadas</p>
+                        <p class="fs-4 fw-bold text-primary mb-0">100% revisadas</p>
                     </article>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3">
                     <article class="h-100 p-4 bg-white border rounded-3">
+                        <i class="bi bi-shield-check fs-2 text-primary d-block mb-2" aria-hidden="true"></i>
                         <h3 class="fs-5 fw-semibold text-primary-emphasis mb-2">Casco y candado incluidos</h3>
                         <p class="text-secondary mb-3">Tu seguridad va incluida en la tarifa, sin costo extra.</p>
-                        <p class="fs-4 fw-bold text-success mb-0">Sin costo extra</p>
+                        <p class="fs-4 fw-bold text-primary mb-0">Sin costo extra</p>
                     </article>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3">
                     <article class="h-100 p-4 bg-white border rounded-3">
+                        <i class="bi bi-award fs-2 text-primary d-block mb-2" aria-hidden="true"></i>
                         <h3 class="fs-5 fw-semibold text-primary-emphasis mb-2">Guías certificados</h3>
                         <p class="text-secondary mb-3">Recorridos acompañados por guías con certificación y mucho conocimiento de la ciudad.</p>
-                        <p class="fs-4 fw-bold text-success mb-0">Certificados</p>
+                        <p class="fs-4 fw-bold text-primary mb-0">Certificados</p>
                     </article>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3">
                     <article class="h-100 p-4 bg-white border rounded-3">
+                        <i class="bi bi-pin-map fs-2 text-primary d-block mb-2" aria-hidden="true"></i>
                         <h3 class="fs-5 fw-semibold text-primary-emphasis mb-2">Devolución en tres sedes</h3>
                         <p class="text-secondary mb-3">Recoge en una sede y devuelve en la que te quede más cómoda.</p>
-                        <p class="fs-4 fw-bold text-success mb-0">3 sedes</p>
+                        <p class="fs-4 fw-bold text-primary mb-0">3 sedes</p>
                     </article>
                 </div>
             </div>
         </section>
 
         <!-- Franja final: columna en celular, fila desde md -->
-        <section class="bg-success text-white rounded-3 p-4 my-5 d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3">
+        <section class="bg-primary text-white rounded-3 p-4 my-5 d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3">
             <img src="img/images.jpg" alt="" class="d-none d-md-block rounded-circle" width="80" height="80">
             <p class="fs-3 fw-bold mb-0 text-center text-md-start">¿Listo para rodar?</p>
-            <a href="Paginas/Reservas.html" class="btn btn-warning btn-lg fw-bold">Reservar ahora</a>
+            <a href="Paginas/Reservas.html" class="btn btn-pedal btn-lg fw-bold">Reservar ahora</a>
         </section>
 
-        <section>
-            <h2> ¿Cómo alquilar?</h2>
-                <p> 
-                Para alquilar una bicicleta solo debes:  
-                </p>
-
-            <ol>
-                <li> Acercate a nuestra tienda</li>
-                <li> Elige la bicicleta que más te guste</li>
-                <li> Presenta tu documento de identidad</li>
-                <li> Firma el contrato de alquiler</li>
-                <li> Disfruta de tu bicicleta</li>
-            </ol>
-
-            <a href="Paginas/Tarifas.html#Tablas_recorridos" class="btn btn-success btn-lg">Empieza tu aventura hoy mismo!</a>
-                    
-            <p> 
-            Beneficiate de nuestros servicios y vive la experiencia de recorrer Medellín en bicicleta:  
-            </p>
-
-            <ul> 
-                <li> Tenemos variadades de bicicletas</li>
-                <li> Alquilar con nosotros te permite participar en los recorridos guiados</li>
-                <li> Te prestamos los implementos de seguriad total mente gratis </li>
-            </ul>
-
-            <img src="img/istockphoto-854733622-612x612.jpg" alt="Bicicleta de Rueda Libre" width="400">
+        <!-- Como alquilar: pasos a la izquierda (7 de 12) y tarjeta de beneficios a la derecha (5 de 12) desde lg -->
+        <section class="my-5" id="como-alquilar">
+            <h2 class="titulo-seccion">¿Cómo alquilar?</h2>
+            <div class="row g-4">
+                <div class="col-12 col-lg-7 d-flex flex-column justify-content-center">
+                    <p>Para alquilar una bicicleta solo debes:</p>
+                    <ol class="list-unstyled mb-4">
+                    <li class="d-flex align-items-center gap-3 mb-3">
+                        <span class="insignia-marca" aria-hidden="true">1</span>
+                        <span>Acércate a nuestra tienda</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-3 mb-3">
+                        <span class="insignia-marca" aria-hidden="true">2</span>
+                        <span>Elige la bicicleta que más te guste</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-3 mb-3">
+                        <span class="insignia-marca" aria-hidden="true">3</span>
+                        <span>Presenta tu documento de identidad</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-3 mb-3">
+                        <span class="insignia-marca" aria-hidden="true">4</span>
+                        <span>Firma el contrato de alquiler</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-3 mb-3">
+                        <span class="insignia-marca" aria-hidden="true">5</span>
+                        <span>Disfruta de tu bicicleta</span>
+                    </li>
+                    </ol>
+                    <a href="Paginas/Tarifas.html#Tablas_recorridos" class="btn btn-primary btn-lg align-self-start"><i class="bi bi-bicycle" aria-hidden="true"></i> ¡Empieza tu aventura hoy mismo!</a>
+                </div>
+                <div class="col-12 col-lg-5">
+                    <article class="card h-100">
+                        <div class="ratio ratio-4x3">
+                            <img src="img/istockphoto-854733622-612x612.jpg" class="card-img-top object-fit-cover" alt="Ciclista de Rueda Libre recorriendo Medellín">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">Benefíciate de nuestros servicios</h3>
+                            <p class="card-text">Vive la experiencia de recorrer Medellín en bicicleta:</p>
+                            <ul class="list-unstyled mb-0">
+                            <li class="d-flex gap-2 mb-2"><i class="bi bi-check-circle-fill text-primary" aria-hidden="true"></i><span>Tenemos variedad de bicicletas</span></li>
+                            <li class="d-flex gap-2 mb-2"><i class="bi bi-check-circle-fill text-primary" aria-hidden="true"></i><span>Alquilar con nosotros te permite participar en los recorridos guiados</span></li>
+                            <li class="d-flex gap-2 mb-2"><i class="bi bi-check-circle-fill text-primary" aria-hidden="true"></i><span>Te prestamos los implementos de seguridad totalmente gratis</span></li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2 id ="Encuentranos"> Encuentranos</h2>
-            <p> Puedes visitarnos o contactarnos en: </p>
-            <p> Telefono: 3209769383</p>
-            <a href="mailito:tiendaruedalibre@gmail.com">Contacto correo</a>
-            <br>
-            <a href="https://www.google.com/maps/place/Riwi/@6.2191063,-75.5861952,17z/data=!3m1!4b1!4m6!3m5!1s0x8e44293f0e114eef:0x99610cdd44c7c081!8m2!3d6.219101!4d-75.5836149!16s%2Fg%2F11l2x8f5ch?entry=ttu&g_ep=EgoyMDI2MTAxOC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Visitanos!</a>  
-            <br>
-            <img src="img/ubicam.jpg" alt="Bicicleta de Rueda Libre" width="400">
+        <!-- Encuentranos: datos de contacto (6 de 12) y foto (6 de 12) desde md -->
+        <section class="my-5">
+            <h2 id="Encuentranos" class="titulo-seccion">Encuéntranos</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-6">
+                    <article class="card h-100">
+                        <div class="card-body">
+                            <p>Puedes visitarnos o contactarnos en:</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="d-flex align-items-center gap-3 mb-3"><span class="insignia-marca"><i class="bi bi-telephone" aria-hidden="true"></i></span><span>Teléfono: 3209769383</span></li>
+                                <li class="d-flex align-items-center gap-3 mb-3"><span class="insignia-marca"><i class="bi bi-envelope" aria-hidden="true"></i></span><a href="mailto:tiendaruedalibre@gmail.com">tiendaruedalibre@gmail.com</a></li>
+                                <li class="d-flex align-items-center gap-3"><span class="insignia-marca"><i class="bi bi-geo-alt" aria-hidden="true"></i></span><span>Medellín, Antioquia</span></li>
+                            </ul>
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="https://www.google.com/maps/place/Riwi/@6.2191063,-75.5861952,17z/data=!3m1!4b1!4m6!3m5!1s0x8e44293f0e114eef:0x99610cdd44c7c081!8m2!3d6.219101!4d-75.5836149!16s%2Fg%2F11l2x8f5ch?entry=ttu&g_ep=EgoyMDI2MTAxOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="bi bi-geo-alt" aria-hidden="true"></i> Cómo llegar</a>
+                                <a href="mailto:tiendaruedalibre@gmail.com" class="btn btn-outline-primary"><i class="bi bi-envelope" aria-hidden="true"></i> Escríbenos</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6">
+                    <article class="card h-100">
+                        <div class="ratio ratio-4x3">
+                            <img src="img/ubicam.jpg" class="card-img-top object-fit-cover" alt="Fachada de la tienda Rueda Libre">
+                        </div>
+                    </article>
+                </div>
+            </div>
 
-            <a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" class="whatsapp">
-            WhatsApp
-            </a>
+            <a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" class="whatsapp"><i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp</a>
         </section>
 
-        
     </main>
 
-    <footer class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-start gap-3 p-3 mt-5 border-top">
+    <footer class="pie-marca d-flex flex-column flex-md-row justify-content-md-between align-items-md-start gap-3 p-3 mt-5">
         <div class="flex-md-fill">
             <p class="mb-0">&copy; Rueda Libre</p>
             <p class="mb-0">Alquiler de bicicletas en Medellín</p>
         </div>
         <div class="flex-md-fill">
-            <p class="mb-0">Contacto: ruedalibre@gmail.com</p>
+            <p class="mb-0"><i class="bi bi-envelope" aria-hidden="true"></i> Contacto: ruedalibre@gmail.com</p>
         </div>
         <div class="flex-md-fill">
-            <p class="mb-0">Horario: lunes a sábado, 8:00 a.m. - 6:00 p.m.</p>
+            <p class="mb-0"><i class="bi bi-clock" aria-hidden="true"></i> Horario: lunes a sábado, 8:00 a.m. - 6:00 p.m.</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

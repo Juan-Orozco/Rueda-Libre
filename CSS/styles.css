@@ -1,19 +1,28 @@
 /* ==========================================================
-   Rueda Libre v2.0-beta — identidad visual sobre Bootstrap 5.3
-   Esta hoja se carga DESPUES de bootstrap.min.css.
-   La distribucion (columnas, flex, espacios) la hace Bootstrap
-   en el HTML; aqui solo queda: variables, tipografia, colores,
-   tablas, formulario y estados (hover/foco).
+   Rueda Libre v2.0 — identidad de marca sobre Bootstrap 5.3
+   Esta hoja se carga DESPUES de bootstrap.min.css y no fuerza ninguna regla:
+   gana por orden de carga y porque cambia las variables --bs-* que
+   Bootstrap lee. La distribucion (columnas, flex, espacios) vive en el HTML.
+
+   Indice
+   1. Variables de marca y de Bootstrap
+   2. Base: tipografia y colores
+   3. Navbar y cards
+   4. Botones (primario, contorno y variante propia Naranja Pedal)
+   5. Formulario (foco, casillas y fieldset)
+   6. Clases propias: titulo-seccion, portada-marca, pie-marca, icono-marca
+   7. Tablas y WhatsApp
    ========================================================== */
 
-/* ---------- Variables ---------- */
+/* ---------- 1. Variables ---------- */
 :root {
-    --color-Titulos-Encabezados: #14213D;
-    --color-Botones-Componentes: #1E7A4F;
-    --color-Fondo-general: #FAF6EF;
-    --color-Texto-Secundario: #5B6470;
+    /* Paleta de marca */
+    --color-Titulos-Encabezados: #14213D;   /* Azul Noche */
+    --color-Botones-Componentes: #1E7A4F;   /* Verde Ruta */
+    --color-Naranja-Pedal: #F39A2B;
+    --color-Fondo-general: #FAF6EF;         /* Crema */
+    --color-Texto-Secundario: #5B6470;      /* Gris Asfalto */
     --color-Texto-general: #000;
-    --color-subrrallado: #cc1717;
 
     /* Espaciado (todo en rem) */
     --Espaciado-pequeno: 0.5rem;
@@ -24,39 +33,36 @@
     --fuente-titulos: 'Montserrat', sans-serif;
     --fuente-parrafos: 'Open Sans', sans-serif;
 
-    /* Bootstrap: sus utilidades (bg-success, text-success, bg-warning, text-primary-emphasis, border-top)
-       leen estas variables, asi que basta con cambiarlas para usar los colores de la marca */
-    --bs-success: #1E7A4F;
-    --bs-success-rgb: 30, 122, 79;
-    --bs-warning: #F39A2B;
-    --bs-warning-rgb: 243, 154, 43;
+    /* Bootstrap: color primario (y su version RGB, que usan bg-primary, text-primary, etc.) */
+    --bs-primary: #1E7A4F;
+    --bs-primary-rgb: 30, 122, 79;
     --bs-primary-text-emphasis: #14213D;
-    --bs-border-color: #5B6470;
+
+    /* Bootstrap: cuerpo, titulos, enlaces y bordes */
     --bs-body-font-family: var(--fuente-parrafos);
     --bs-body-line-height: 1.6;
+    --bs-heading-color: #14213D;
+    --bs-link-color: #1E7A4F;
+    --bs-link-color-rgb: 30, 122, 79;
+    --bs-link-hover-color: #14213D;
+    --bs-link-hover-color-rgb: 20, 33, 61;
+    --bs-border-color: #5B6470;
+    /* Rojo de los mensajes de error: el de Bootstrap da 4.2:1 sobre el fondo crema; este da 6:1 */
+    --bs-form-invalid-color: #b02a37;
+    --bs-border-radius: 0.5rem;
+    --bs-border-radius-sm: 0.375rem;
+    --bs-border-radius-lg: 0.75rem;
 }
 
-/* ---------- Base: tipografia y colores ---------- */
+/* ---------- 2. Base ---------- */
 body {
     font-family: var(--fuente-parrafos);
     background-color: var(--color-Fondo-general);
     color: var(--color-Texto-general);
-    line-height: 1.6;
-}
-
-/* Enlaces de texto con el verde de la marca (mismo peso que el 'a' de Bootstrap, gana por ir despues) */
-a {
-    color: var(--color-Botones-Componentes);
-}
-
-a:hover,
-a:focus {
-    color: var(--color-Titulos-Encabezados);
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--fuente-titulos);
-    color: var(--color-Titulos-Encabezados);
 }
 
 /* Ninguna imagen puede ser mas ancha que su contenedor */
@@ -65,13 +71,11 @@ img {
     height: auto;
 }
 
-/* ---------- Encabezado, menu y pie (solo color) ---------- */
-header,
-footer {
+/* ---------- 3. Navbar y cards ---------- */
+header {
     background-color: #f9fafa;
 }
 
-/* ---------- Navbar: colores de la marca (Bootstrap los lee de estas variables) ---------- */
 .navbar {
     --bs-navbar-color: #333;
     --bs-navbar-hover-color: var(--color-Botones-Componentes);
@@ -89,51 +93,153 @@ footer {
     font-weight: 600;
 }
 
-/* ---------- Cards: borde con el gris de la marca (Bootstrap lo lee de esta variable) ---------- */
 .card {
     --bs-card-border-color: var(--color-Texto-Secundario);
 }
 
-/* ---------- Botones de Bootstrap con los colores de la marca ----------
-   Criterio: btn-success (relleno) = accion principal (Reservar);
-             btn-outline-success (contorno) = consultar (Ver tarifas, Ver recorridos);
-             btn-warning (naranja) = destacado sobre fondo verde.
-   Tamanos: btn-lg en portada y llamadas grandes, tamano normal dentro de tarjetas. */
-.btn-success {
-    --bs-btn-bg: var(--color-Botones-Componentes);
-    --bs-btn-border-color: var(--color-Botones-Componentes);
-    --bs-btn-hover-bg: var(--color-Titulos-Encabezados);
-    --bs-btn-hover-border-color: var(--color-Titulos-Encabezados);
-    --bs-btn-active-bg: var(--color-Titulos-Encabezados);
-    --bs-btn-active-border-color: var(--color-Titulos-Encabezados);
-    --bs-btn-disabled-bg: var(--color-Botones-Componentes);
-    --bs-btn-disabled-border-color: var(--color-Botones-Componentes);
+/* ---------- 4. Botones ----------
+   Criterio: btn-primary (relleno verde) = accion principal (Reservar);
+             btn-outline-primary (contorno) = consultar (Ver tarifas, Ver recorridos);
+             btn-pedal (naranja, texto azul noche) = destacado sobre fondo verde.
+   Contraste: blanco sobre Verde Ruta 5.3:1; Azul Noche sobre Naranja Pedal 7.2:1. */
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #1E7A4F;
+    --bs-btn-border-color: #1E7A4F;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #186540;
+    --bs-btn-hover-border-color: #186540;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #134f33;
+    --bs-btn-active-border-color: #134f33;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #1E7A4F;
+    --bs-btn-disabled-border-color: #1E7A4F;
     --bs-btn-focus-shadow-rgb: 30, 122, 79;
 }
 
-.btn-outline-success {
-    --bs-btn-color: var(--color-Botones-Componentes);
-    --bs-btn-border-color: var(--color-Botones-Componentes);
-    --bs-btn-hover-bg: var(--color-Botones-Componentes);
-    --bs-btn-hover-border-color: var(--color-Botones-Componentes);
-    --bs-btn-active-bg: var(--color-Botones-Componentes);
-    --bs-btn-active-border-color: var(--color-Botones-Componentes);
-    --bs-btn-disabled-color: var(--color-Botones-Componentes);
-    --bs-btn-disabled-border-color: var(--color-Botones-Componentes);
+.btn-outline-primary {
+    --bs-btn-color: #1E7A4F;
+    --bs-btn-border-color: #1E7A4F;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #1E7A4F;
+    --bs-btn-hover-border-color: #1E7A4F;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #186540;
+    --bs-btn-active-border-color: #186540;
+    --bs-btn-disabled-color: #1E7A4F;
+    --bs-btn-disabled-border-color: #1E7A4F;
     --bs-btn-focus-shadow-rgb: 30, 122, 79;
 }
 
-.btn-warning {
+/* Variante propia: se usa junto a .btn (class="btn btn-pedal") y solo define las variables del componente */
+.btn-pedal {
+    --bs-btn-color: #14213D;
     --bs-btn-bg: #F39A2B;
     --bs-btn-border-color: #F39A2B;
-    --bs-btn-hover-bg: #d9861f;
-    --bs-btn-hover-border-color: #d9861f;
-    --bs-btn-active-bg: #d9861f;
-    --bs-btn-active-border-color: #d9861f;
+    --bs-btn-hover-color: #14213D;
+    --bs-btn-hover-bg: #f7b25c;
+    --bs-btn-hover-border-color: #f7b25c;
+    --bs-btn-active-color: #14213D;
+    --bs-btn-active-bg: #fac47e;
+    --bs-btn-active-border-color: #fac47e;
+    --bs-btn-disabled-color: #14213D;
+    --bs-btn-disabled-bg: #F39A2B;
+    --bs-btn-disabled-border-color: #F39A2B;
     --bs-btn-focus-shadow-rgb: 243, 154, 43;
 }
 
-/* ---------- Tablas (Tarifas) ---------- */
+/* ---------- 5. Formulario ---------- */
+/* Bootstrap deja el foco y las casillas marcadas en azul fijo: se pasan al verde de marca
+   (mismo peso que sus reglas; gana la nuestra por cargarse despues) */
+.form-control:focus,
+.form-check-input:focus {
+    border-color: #1E7A4F;
+    box-shadow: 0 0 0 0.25rem rgba(30, 122, 79, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: #1E7A4F;
+    border-color: #1E7A4F;
+}
+
+form fieldset {
+    margin-bottom: var(--Espaciado-grande);
+    padding: var(--Espaciado-mediano);
+    border: 1px solid var(--color-Texto-Secundario);
+    border-radius: var(--bs-border-radius);
+}
+
+form legend {
+    /* Bootstrap lo flota y lo estira al 100%: se devuelve a su posicion normal sobre el borde */
+    float: none;
+    width: auto;
+    padding: 0 var(--Espaciado-pequeno);
+    font-family: var(--fuente-titulos);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-Titulos-Encabezados);
+}
+
+/* ---------- 6. Clases propias (complementan a Bootstrap sin modificar sus clases) ---------- */
+
+/* Titulo de seccion: Montserrat en negrita con subrayado naranja */
+.titulo-seccion {
+    display: inline-block;
+    margin-bottom: var(--Espaciado-mediano);
+    padding-bottom: var(--Espaciado-pequeno);
+    border-bottom: 0.25rem solid var(--color-Naranja-Pedal);
+    font-weight: 700;
+}
+
+/* Portada: bloque de texto blanco con franja verde a la izquierda */
+.portada-marca {
+    background-color: #fff;
+    border-left: 0.5rem solid var(--color-Botones-Componentes);
+    border-radius: var(--bs-border-radius);
+    box-shadow: 0 0.125rem 0.5rem rgba(20, 33, 61, 0.12);
+}
+
+/* Pie: Azul Noche con texto crema, borde naranja e iconos naranja (crema/azul 14:1) */
+.pie-marca {
+    background-color: var(--color-Titulos-Encabezados);
+    color: var(--color-Fondo-general);
+    border-top: 0.25rem solid var(--color-Naranja-Pedal);
+}
+
+.pie-marca a {
+    color: var(--color-Fondo-general);
+}
+
+.pie-marca a:hover,
+.pie-marca a:focus {
+    color: var(--color-Naranja-Pedal);
+}
+
+.pie-marca .bi {
+    color: var(--color-Naranja-Pedal);
+}
+
+/* Circulo verde con numero o icono (pasos de "Como alquilar" y datos de contacto); blanco sobre Verde Ruta 5.3:1 */
+.insignia-marca {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: var(--color-Botones-Componentes);
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Iconos de datos de contacto en el verde de marca */
+.icono-marca {
+    color: var(--color-Botones-Componentes);
+}
+
+/* ---------- 7. Tablas y WhatsApp ---------- */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -169,39 +275,22 @@ thead th {
         font-size: 1rem;
     }
 
+    /* Con mas ancho las palabras ya no se parten a mitad */
     th,
     td {
-        padding: var(--Espaciado-pequeno) var(--Espaciado-mediano);
+        padding: var(--Espaciado-pequeno) 0.75rem;
+        overflow-wrap: normal;
     }
 }
 
-/* ---------- Formulario (Reservas): los campos usan form-control / form-check de Bootstrap; aqui solo fieldset y legend ---------- */
-form fieldset {
-    margin-bottom: var(--Espaciado-grande);
-    padding: var(--Espaciado-mediano);
-    border: 1px solid var(--color-Texto-Secundario);
-    border-radius: var(--Espaciado-pequeno);
-}
-
-form legend {
-    /* Bootstrap lo flota y lo estira al 100%: se devuelve a su posicion normal sobre el borde */
-    float: none;
-    width: auto;
-    padding: 0 var(--Espaciado-pequeno);
-    font-family: var(--fuente-titulos);
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-Titulos-Encabezados);
-}
-
-/* ---------- WhatsApp flotante ---------- */
+/* WhatsApp flotante: texto Azul Noche sobre verde WhatsApp (8:1; el blanco daba 2:1) */
 .whatsapp {
     position: fixed;
     bottom: 20px;
     right: 20px;
     padding: 12px 20px;
     background-color: #25d366;
-    color: #ffffff;
+    color: var(--color-Titulos-Encabezados);
     font-weight: bold;
     text-decoration: none;
     border-radius: 30px;
@@ -210,7 +299,8 @@ form legend {
     transition: background-color 0.3s ease;
 }
 
-.whatsapp:hover {
-    background-color: #128c7e;
-    color: #ffffff;
+.whatsapp:hover,
+.whatsapp:focus {
+    background-color: #1faa52;
+    color: var(--color-Titulos-Encabezados);
 }
