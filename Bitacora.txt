@@ -134,3 +134,117 @@ Dia 4 - Mobile-first (v1.5)
        Solucion: el min-height solo se aplica desde 768px.
     5. Antes usaba una media query con max-width (desktop-first) para Reservas.
        Solucion: la cambie a min-width, para que lo basico describa el celular.
+
+
+Semana 3
+Dia 2 - MiniReto 1: flota con Bootstrap 5.3 (pruebas/catalogo-bootstrap.html)
+    Tiempo invertido: ~1 minuto en armar la pagina (la hizo Claude; si tu la haces a mano anota tu tiempo real aqui: ____ min).
+                      Mi version con CSS propio tomo mucho mas: hubo que probar minmax(), auto-fit, flex en la tarjeta y los breakpoints.
+    Codigo de la flota:
+        - CSS propio: 40 lineas de CSS para la flota (.cuadricula-flota + .tarjeta-flota y sus partes);
+          solo la distribucion (.cuadricula-flota) son 5 lineas: display: grid, grid-template-columns con auto-fit/minmax y gap.
+        - Bootstrap: 0 lineas de CSS propio. La distribucion sale de 4 clases por columna
+          (col-12 col-sm-6 col-lg-4 col-xl-3) + "row g-3" en el contenedor; la tarjeta usa card, h-100, d-flex, flex-column, mt-auto.
+    Comprobado en modo dispositivo: 360 px = 1 columna, 576 px = 2 (sm), 992 px = 3 (lg), 1200 px = 4 (xl).
+    CSS y JS (bundle 5.3.3) cargan por CDN con 200 en Network y sin errores.
+    Que me dio Bootstrap sin esfuerzo:
+        - Las columnas por breakpoint con nombres claros (sm, lg, xl), sin escribir una media query.
+        - Tarjetas con borde, esquinas y relleno ya listos (card), todas de la misma altura (h-100).
+        - Boton con estilo (btn btn-success) y el contenedor centrado con margenes (container).
+    Que control perdi:
+        - Mi grid con auto-fit cuenta las columnas solo segun el ancho minimo de cada tarjeta (16rem);
+          con Bootstrap el numero de columnas esta fijado por los breakpoints (576, 992, 1200 px): si agrego mas tarjetas no cambia nada, pero no se adapta a anchos intermedios.
+        - Los colores de mi marca (verde #1E7A4F, azul noche) y las variables --Espaciado-* no existen aqui;
+          el verde es el success de Bootstrap.
+        - El HTML quedo con muchas clases (7 tarjetas x 4 clases de columna) y dependo de un CDN externo.
+
+
+Dia 2 - MiniReto 2 (6): beneficios y franja solo con utilidades (pruebas/catalogo-bootstrap.html)
+    Sin CSS propio: 0 style="", 0 <style> y ninguna clase inventada. Todas las clases son de Bootstrap 5.3
+    (por ejemplo ms-/me- en vez de ml-/mr-, que son de la version 4 y ya no existen).
+    Comprobado: 360 px -> beneficios en 1 columna, franja en columna y sin imagen;
+                768 px -> beneficios en 2 columnas, franja en fila y con imagen (md);
+                1200 px -> beneficios en 4 columnas.
+    Uso de color: verde (text-success / bg-success) para lo destacado y la franja, gris (text-secondary) para descripciones,
+    azul oscuro (text-primary-emphasis) para titulos, naranja (bg-warning) para el enlace de accion.
+    Cinco clases que encontre en la documentacion:
+        1. flex-md-row: la direccion de flex pasa a fila desde md (768 px); por debajo queda en columna con flex-column.
+        2. d-none d-md-block: oculta el elemento y lo muestra como bloque desde md; sirve para la imagen decorativa.
+        3. gap-3: separacion uniforme entre los hijos de un contenedor flex o grid (equivale al gap de CSS).
+        4. text-primary-emphasis: color de texto oscuro de la familia primaria, con buen contraste para titulos.
+        5. rounded-pill: bordes totalmente redondeados; convierte el enlace en una "pastilla" sin usar el componente boton.
+    Otras que use: text-md-start (alinea a la izquierda desde md), justify-content-md-between, align-items-center, fw-bold, fs-3, px-4, py-2, my-5.
+
+
+Dia 3 - MiniReto 7: Bootstrap en la pagina de inicio (index.html)
+    Orden de carga: primero bootstrap.min.css y despues CSS/styles.css. Si dos reglas tienen la misma
+    especificidad, gana la que se carga despues, por eso nuestra hoja va al final.
+    Que migre a la grilla/utilidades: portada (row + col-md-6), rutas (col-md-4), tipos de bicicleta (col-md-4),
+    flota (col-12 col-sm-6 col-lg-4 col-xl-3), beneficios (col-sm-6 col-lg-3) y la franja final (flex).
+    Que borre de styles.css: .portada, .galeria-rutas, .tarjeta-ruta, .cuadricula-flota, .tarjeta-flota, .tarjetas-bicicletas,
+    .tarjeta-bicicleta, .etiqueta-nuevo, .SeprarIndex, .qs y .servicio (estas dos ya no las usaba nadie).
+    Lo que sigue usando otras paginas quedo marcado con el comentario "USADO POR": encabezado y menu (todas),
+    pie y WhatsApp (todas), tablas (Tarifas), formulario y fila documento/celular (Reservas), contenedor-reservas (Reservas), main/aside.
+    Probado a 360 / 768 / 1280 px: sin scroll horizontal ni imagenes fuera de su contenedor.
+        Ancho   Portada  Rutas  Flota  Beneficios  Franja
+        360     1        1      1      1           columna (sin imagen)
+        768     2        3      2      2           fila (con imagen)
+        1280    2        3      4      4           fila (con imagen)
+
+    Conflictos entre mis estilos y los de Bootstrap (resueltos sin !important):
+    1. Colores de enlaces: Bootstrap pinta todos los <a> de azul (#0d6efd) y subrayados. En DevTools se ve el
+       color del enlace de Bootstrap en lugar del verde de la marca.
+       Solucion: en styles.css una regla "a { color: verde de la marca }" y "a:hover { azul noche }".
+       Al ir despues de Bootstrap y tener la misma especificidad (una etiqueta), gana la nuestra.
+    2. Efecto secundario de la solucion 1: "a:hover" (clase+etiqueta) pesa mas que ".boton-cta" (solo clase), asi que
+       al pasar el mouse el texto del boton se ponia azul noche sobre fondo azul noche (ilegible).
+       Solucion: agregar color en ".boton-cta:hover" (dos clases/pseudoclases pesan mas que "a:hover").
+       Lo mismo con ".whatsapp:hover". Lecciones: la cascada decide primero por especificidad y solo despues por orden.
+    3. Colores de marca vs colores de Bootstrap: bg-success daba #198754 y bg-warning #ffc107, no los de Rueda Libre
+       (#1E7A4F y #F39A2B). Las utilidades de Bootstrap usan !important, asi que no se pueden pisar con CSS normal.
+       Solucion: cambiar las variables que ellas leen en :root (--bs-success-rgb, --bs-warning-rgb,
+       --bs-primary-text-emphasis). Asi las utilidades usan nuestros colores sin pelear con !important.
+    Otros que tambien vi: Bootstrap deja line-height 1.5 en body; nuestro 1.6 gana por ir despues (y lo puse tambien
+    en --bs-body-line-height); fuentes y fondo crema se mantienen (Montserrat/Open Sans, #FAF6EF).
+
+
+Dia 4 - MiniReto 8: migracion completa a Bootstrap (v2.0-beta)
+    Tarifas: tablas (col-lg-7) e informacion complementaria (col-lg-5) en dos columnas desde lg; en celular y tablet quedan en una.
+    Reservas: formulario (col-md-8) y contacto (col-md-4) desde md; documento y celular en row g-3 con col-sm-6.
+    Las reglas de validacion nativa siguen igual: required, pattern, type, min y max suman 22 antes y 22 despues.
+    Encabezado y pie de las 4 paginas tambien pasaron a utilidades de Bootstrap (d-flex, flex-md-row, gap, etc.).
+    Probado a 360 / 768 / 1280 px en las 4 paginas: sin scroll horizontal ni imagenes fuera de su contenedor.
+        Tarifas: 1 columna en 360 y 768, 2 columnas en 1280 (665 px y 475 px).
+        Reservas: 1 columna en 360, 2 en 768 y 1280 (proporcion 2:1 = 8/4).
+
+    Conflictos nuevos con Bootstrap (resueltos sin !important):
+    - caption: Bootstrap manda el titulo de la tabla al pie (caption-side: bottom) y lo pinta gris. Solucion: caption-side: top y color propio.
+    - legend: Bootstrap la flota (float:left; width:100%), por lo que dejaba de quedar sobre el borde del fieldset.
+      Solucion: float: none; width: auto en form legend.
+    - Bordes: la utilidad border-top usa !important, asi que no se puede cambiar el color con CSS normal.
+      Solucion: cambiar la variable --bs-border-color en :root.
+
+    COMPARATIVA FINAL: CSS propio (v1.5) vs Bootstrap (v2.0-beta)
+        Lineas de styles.css (git show <commit>:CSS/styles.css | wc -l):
+            v1.0 (commit 67d1d41, antes de Flexbox): 334 lineas
+            v1.5 (commit b7564bb, CSS propio responsive): 543 lineas (462 con contenido)
+            v2.0-beta (actual): 237 lineas (206 con contenido)
+            Reduccion v1.5 -> v2.0-beta: 306 lineas menos = 56 % menos.
+        Tiempo invertido:
+            v1.5 con CSS propio: ____ min (llena con tu tiempo real; abarca Flexbox, Grid y mobile-first, retos 1 al 4 de la semana 2).
+            v2.0-beta con Bootstrap: unos 2 min de ejecucion para migrar tarifas, reservas y limpiar el CSS (hecho por Claude;
+                el reto 7 de inicio y el 8 juntos tambien fueron de pocos minutos). Tu tiempo real: ____ min.
+        Ventajas observadas:
+            - Mucho menos CSS que mantener: la distribucion vive en el HTML y se entiende leyendo las clases (col-md-8, flex-md-row).
+            - Los breakpoints (sm, md, lg, xl) ya vienen pensados y estan documentados.
+            - Tarjetas, grilla y espaciados consistentes entre paginas sin repetir reglas.
+        Desventajas observadas:
+            - El HTML se llena de clases y cuesta mas leerlo (las filas de tarjetas repiten 4 clases de columna).
+            - Hay que descubrir y resolver choques (caption, legend, enlaces, colores) con la cascada; se perdio tiempo en eso.
+            - Dependencia de un CDN externo y de los nombres de las clases de Bootstrap.
+            - Los colores de marca solo se aplican a las utilidades despues de remapear variables --bs-*.
+        Conclusion: Bootstrap si redujo el trabajo en la parte de distribucion (de 543 a 237 lineas de CSS, un 56 % menos)
+            y dio mas estabilidad en los breakpoints; se paga con HTML mas cargado y con un periodo de ajuste de conflictos.
+            Para un sitio con varias paginas y poco tiempo vale la pena; para algo con una identidad visual muy particular,
+            el CSS propio seguiria siendo mas fino. Recomendacion: seguir con Bootstrap para la estructura y dejar styles.css
+            solo para identidad (colores, tipografia, tablas y formulario).

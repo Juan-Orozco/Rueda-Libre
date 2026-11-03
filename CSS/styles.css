@@ -1,16 +1,12 @@
 /* ==========================================================
-   Rueda Libre v1.5 — enfoque mobile-first
-   1. Variables y base
-   2. Encabezado y menú
-   3. Componentes (botón, tarjetas, tablas, formulario)
-   4. Secciones (portada, rutas, flota, reservas)
-   5. Pie y WhatsApp
-   6. Tablet  (min-width: 768px)
-   7. Escritorio (min-width: 1200px)
-   Los estilos sin media query describen el celular (1 columna).
+   Rueda Libre v2.0-beta — identidad visual sobre Bootstrap 5.3
+   Esta hoja se carga DESPUES de bootstrap.min.css.
+   La distribucion (columnas, flex, espacios) la hace Bootstrap
+   en el HTML; aqui solo queda: variables, tipografia, colores,
+   tablas, formulario y estados (hover/foco).
    ========================================================== */
 
-/* ---------- 1. Variables y base ---------- */
+/* ---------- Variables ---------- */
 :root {
     --color-Titulos-Encabezados: #14213D;
     --color-Botones-Componentes: #1E7A4F;
@@ -27,20 +23,35 @@
     /* Fuentes */
     --fuente-titulos: 'Montserrat', sans-serif;
     --fuente-parrafos: 'Open Sans', sans-serif;
+
+    /* Bootstrap: sus utilidades (bg-success, text-success, bg-warning, text-primary-emphasis, border-top)
+       leen estas variables, asi que basta con cambiarlas para usar los colores de la marca */
+    --bs-success: #1E7A4F;
+    --bs-success-rgb: 30, 122, 79;
+    --bs-warning: #F39A2B;
+    --bs-warning-rgb: 243, 154, 43;
+    --bs-primary-text-emphasis: #14213D;
+    --bs-border-color: #5B6470;
+    --bs-body-font-family: var(--fuente-parrafos);
+    --bs-body-line-height: 1.6;
 }
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
+/* ---------- Base: tipografia y colores ---------- */
 body {
-    margin: 0;
     font-family: var(--fuente-parrafos);
     background-color: var(--color-Fondo-general);
     color: var(--color-Texto-general);
     line-height: 1.6;
+}
+
+/* Enlaces de texto con el verde de la marca (mismo peso que el 'a' de Bootstrap, gana por ir despues) */
+a {
+    color: var(--color-Botones-Componentes);
+}
+
+a:hover,
+a:focus {
+    color: var(--color-Titulos-Encabezados);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -48,56 +59,16 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-Titulos-Encabezados);
 }
 
-/* Ninguna imagen puede ser más ancha que su contenedor */
+/* Ninguna imagen puede ser mas ancha que su contenedor */
 img {
     max-width: 100%;
     height: auto;
 }
 
-main,
-aside {
-    width: 100%;
-    max-width: 70rem;
-    margin: 0 auto;
-    padding: 0 var(--Espaciado-mediano);
-}
-
-/* ---------- 2. Encabezado y menú ---------- */
-
-/* Móvil: nombre arriba y menú debajo, centrados */
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--Espaciado-mediano);
-    padding: var(--Espaciado-mediano);
+/* ---------- Encabezado, menu y pie (solo color) ---------- */
+header,
+footer {
     background-color: #f9fafa;
-    text-align: center;
-}
-
-/* Logo + título juntos, para que el encabezado siga teniendo 2 bloques */
-.marca {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: var(--Espaciado-mediano);
-}
-
-.marca h1 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-/* Menú: lista flexible, enlaces separados con gap, bajan de línea si no caben */
-#menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--Espaciado-mediano) var(--Espaciado-grande);
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 #menu a {
@@ -115,9 +86,7 @@ header {
     color: var(--color-Botones-Componentes);
 }
 
-/* ---------- 3. Componentes ---------- */
-
-/* Botón CTA */
+/* ---------- Boton CTA ---------- */
 .boton-cta {
     display: inline-block;
     padding: var(--Espaciado-pequeno) var(--Espaciado-mediano);
@@ -128,84 +97,28 @@ header {
     font-weight: 600;
 }
 
+/* 'a:hover' pesa mas que '.boton-cta': se fija el color tambien en hover */
 .boton-cta:hover,
 .boton-cta:focus {
     background-color: var(--color-Titulos-Encabezados);
-}
-
-/* Tarjetas de servicio y bloque "¿Quiénes somos?" */
-.qs {
-    margin-bottom: var(--Espaciado-grande);
-    padding: var(--Espaciado-mediano);
-    border: 1px solid var(--color-Texto-Secundario);
-    border-radius: var(--Espaciado-pequeno);
-}
-
-.servicio {
-    width: 100%;
-    padding: var(--Espaciado-mediano);
-    border: 1px solid var(--color-Texto-Secundario);
-    border-radius: var(--Espaciado-pequeno);
-    margin-bottom: var(--Espaciado-grande);
-}
-
-.servicio img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.SeprarIndex fieldset {
-    margin: 0 0 var(--Espaciado-grande);
-    padding: var(--Espaciado-mediano);
-    border: 1px solid var(--color-Texto-Secundario);
-    border-radius: var(--Espaciado-pequeno);
-}
-
-/* Tipos de bicicletas */
-.tarjetas-bicicletas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--Espaciado-mediano);
-}
-
-.tarjeta-bicicleta {
-    position: relative;
-    flex: 1 1 200px;
-    padding: var(--Espaciado-mediano);
-    border: 1px solid var(--color-Texto-Secundario);
-    border-radius: 8px;
-}
-
-.tarjeta-bicicleta img {
-    display: block;
-    width: 100%;
-    height: 180px;
-    border-radius: 4px;
-}
-
-.etiqueta-nuevo {
-    position: absolute;
-    top: var(--Espaciado-pequeno);
-    right: var(--Espaciado-pequeno);
-    padding: 0.25rem var(--Espaciado-pequeno);
-    border-radius: 4px;
-    background-color: var(--color-Titulos-Encabezados);
     color: var(--color-Fondo-general);
-    font-weight: 600;
 }
 
-/* Tablas: móvil con letra y relleno pequeños para leerse sin scroll lateral */
+/* ---------- Tablas (Tarifas) ---------- */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: var(--Espaciado-grande);
     font-size: 0.8rem;
+    /* Bootstrap manda el titulo al pie de la tabla: lo devolvemos arriba */
+    caption-side: top;
 }
 
 caption {
     padding: var(--Espaciado-pequeno);
     font-family: var(--fuente-titulos);
+    /* Bootstrap lo pinta gris claro */
+    color: var(--color-Titulos-Encabezados);
 }
 
 th,
@@ -222,17 +135,18 @@ thead th {
     color: var(--color-Fondo-general);
 }
 
-tbody th {
-    font-weight: 600;
+@media (min-width: 768px) {
+    table {
+        font-size: 1rem;
+    }
+
+    th,
+    td {
+        padding: var(--Espaciado-pequeno) var(--Espaciado-mediano);
+    }
 }
 
-/* Formulario */
-form {
-    width: 100%;
-    max-width: 100rem;
-    margin: 0 auto;
-}
-
+/* ---------- Formulario (Reservas) ---------- */
 form fieldset {
     margin-bottom: var(--Espaciado-grande);
     padding: var(--Espaciado-mediano);
@@ -241,19 +155,23 @@ form fieldset {
 }
 
 form legend {
+    /* Bootstrap lo flota y lo estira al 100%: se devuelve a su posicion normal sobre el borde */
+    float: none;
+    width: auto;
     padding: 0 var(--Espaciado-pequeno);
     font-family: var(--fuente-titulos);
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--color-Titulos-Encabezados);
 }
 
-/* Cada etiqueta en su propia línea, sobre su campo */
+/* Cada etiqueta en su propia linea, sobre su campo */
 form label {
     display: block;
     margin-bottom: var(--Espaciado-pequeno);
 }
 
-/* Excepción: la etiqueta de un radio/checkbox va al lado de su botón */
+/* Excepcion: la etiqueta de un radio/checkbox va al lado de su boton */
 form input[type="radio"] + label,
 form input[type="checkbox"] + label {
     display: inline-block;
@@ -279,15 +197,6 @@ form textarea {
     resize: vertical;
 }
 
-.grupo-opciones {
-    margin-bottom: var(--Espaciado-pequeno);
-}
-
-.grupo-opciones p {
-    margin: 0 0 var(--Espaciado-pequeno);
-    font-weight: 600;
-}
-
 form button {
     display: inline-block;
     margin-top: var(--Espaciado-mediano);
@@ -306,146 +215,7 @@ form button:focus {
     background-color: var(--color-Titulos-Encabezados);
 }
 
-/* Fila del formulario: móvil en columna (Flexbox) */
-.fila-campos {
-    display: flex;
-    flex-direction: column;
-}
-
-.fila-campos .campo {
-    flex: 1;
-}
-
-/* ---------- 4. Secciones ---------- */
-
-/* Portada: móvil en una columna (texto y luego foto) */
-.portada {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    gap: var(--Espaciado-grande);
-}
-
-.portada-texto {
-    padding: var(--Espaciado-mediano);
-    border: 1px solid var(--color-Texto-Secundario);
-    border-radius: var(--Espaciado-pequeno);
-}
-
-.portada img {
-    display: block;
-    width: 100%;
-    border-radius: var(--Espaciado-pequeno);
-}
-
-/* Galería de rutas: móvil en una columna */
-.galeria-rutas {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--Espaciado-mediano);
-}
-
-.ruta {
-    padding: var(--Espaciado-mediano);
-    border: 1px solid var(--color-Texto-Secundario);
-    border-radius: var(--Espaciado-pequeno);
-}
-
-.ruta img {
-    display: block;
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 4px;
-}
-
-.ruta h3 {
-    margin: var(--Espaciado-mediano) 0 var(--Espaciado-pequeno);
-}
-
-.ruta p {
-    margin: 0;
-}
-
-/* Flota: tantas columnas de mínimo 16rem como quepan (1 en móvil), sin media queries */
-.flota-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-    gap: var(--Espaciado-mediano);
-}
-
-/* Tarjeta: caja de la semana 1 (relleno, borde, esquinas) + Flexbox en columna */
-.tarjeta-flota {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: var(--Espaciado-mediano);
-    border: 1px solid var(--color-Texto-Secundario);
-    border-radius: var(--Espaciado-pequeno);
-}
-
-.tarjeta-flota img {
-    display: block;
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 4px;
-}
-
-.tarjeta-flota h3 {
-    margin: var(--Espaciado-mediano) 0 var(--Espaciado-pequeno);
-}
-
-/* La descripción absorbe el espacio libre: empuja precio y enlace al final */
-.tarjeta-flota .descripcion {
-    flex-grow: 1;
-    margin: 0 0 var(--Espaciado-pequeno);
-}
-
-.tarjeta-flota .precio {
-    margin: 0 0 var(--Espaciado-mediano);
-    font-weight: 600;
-}
-
-.tarjeta-flota .boton-cta {
-    align-self: flex-start;
-}
-
-/* Reservas: móvil en una columna (formulario y luego contacto) */
-.reservas-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: start;
-    gap: var(--Espaciado-grande);
-    max-width: 70rem;
-    margin: 0 auto;
-    padding: 0 var(--Espaciado-mediano);
-}
-
-/* main y aside se ajustan a su columna */
-.reservas-layout main,
-.reservas-layout aside {
-    max-width: none;
-    padding: 0;
-}
-
-/* ---------- 5. Pie y WhatsApp ---------- */
-
-/* Móvil: los tres bloques apilados */
-footer {
-    display: flex;
-    flex-direction: column;
-    gap: var(--Espaciado-mediano);
-    margin-top: var(--Espaciado-grande);
-    padding: var(--Espaciado-mediano);
-    border-top: 1px solid var(--color-Texto-Secundario);
-    background-color: #f9fafa;
-}
-
-footer p {
-    margin: 0;
-}
-
+/* ---------- WhatsApp flotante ---------- */
 .whatsapp {
     position: fixed;
     bottom: 20px;
@@ -463,81 +233,5 @@ footer p {
 
 .whatsapp:hover {
     background-color: #128c7e;
-}
-
-/* ---------- 6. Tablet: desde 768px ---------- */
-@media (min-width: 768px) {
-    /* Encabezado: nombre a un extremo, menú al otro (distribución del MiniReto 1) */
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: var(--Espaciado-mediano) var(--Espaciado-grande);
-        text-align: left;
-    }
-
-    .marca {
-        justify-content: flex-start;
-    }
-
-    .marca h1 {
-        font-size: 2rem;
-    }
-
-    /* Pie: tres bloques en fila, alineados por arriba */
-    footer {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: var(--Espaciado-grande);
-    }
-
-    footer > div {
-        flex: 1;
-    }
-
-    /* Portada: dos columnas iguales, texto centrado verticalmente */
-    .portada {
-        grid-template-columns: 1fr 1fr;
-        min-height: 70vh;
-    }
-
-    /* Rutas: tres tarjetas en una fila */
-    .galeria-rutas {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Reservas: formulario 2fr, contacto 1fr */
-    .reservas-layout {
-        grid-template-columns: 2fr 1fr;
-    }
-
-    /* Documento y celular lado a lado */
-    .fila-campos {
-        flex-direction: row;
-        gap: var(--Espaciado-mediano);
-    }
-
-    /* Tablas: letra y relleno normales */
-    table {
-        font-size: 1rem;
-    }
-
-    th,
-    td {
-        padding: var(--Espaciado-pequeno) var(--Espaciado-mediano);
-    }
-}
-
-/* ---------- 7. Escritorio: desde 1200px ---------- */
-@media (min-width: 1200px) {
-    /* Más aire a los lados del encabezado y el pie */
-    header,
-    footer {
-        padding-left: 4rem;
-        padding-right: 4rem;
-    }
-
-    .portada {
-        gap: 4rem;
-    }
+    color: #ffffff;
 }
