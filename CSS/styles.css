@@ -1,10 +1,9 @@
 /* ==========================================================
    Rueda Libre v2.0 — identidad de marca sobre Bootstrap 5.3
-   Esta hoja se carga DESPUES de bootstrap.min.css y no fuerza ninguna regla:
-   gana por orden de carga y porque cambia las variables --bs-* que
-   Bootstrap lee. La distribucion (columnas, flex, espacios) vive en el HTML.
+   Esta hoja se carga DESPUES de bootstrap.min.css :
+  
 
-   Indice
+  
    1. Variables de marca y de Bootstrap
    2. Base: tipografia y colores
    3. Navbar y cards
@@ -24,7 +23,7 @@
     --color-Texto-Secundario: #5B6470;      /* Gris Asfalto */
     --color-Texto-general: #000;
 
-    /* Espaciado (todo en rem) */
+    /* Espaciado  */
     --Espaciado-pequeno: 0.5rem;
     --Espaciado-mediano: 1rem;
     --Espaciado-grande: 2rem;
@@ -33,7 +32,7 @@
     --fuente-titulos: 'Montserrat', sans-serif;
     --fuente-parrafos: 'Open Sans', sans-serif;
 
-    /* Bootstrap: color primario (y su version RGB, que usan bg-primary, text-primary, etc.) */
+    /* Bootstrap: no me permitio usar los mismo scolores que tenia.) */
     --bs-primary: #1E7A4F;
     --bs-primary-rgb: 30, 122, 79;
     --bs-primary-text-emphasis: #14213D;
@@ -65,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--fuente-titulos);
 }
 
-/* Ninguna imagen puede ser mas ancha que su contenedor */
+/* Ninguna imagen puede ser mas ancha que su contenedor  para eos se usa ese codigo*/
 img {
     max-width: 100%;
     height: auto;
@@ -132,7 +131,7 @@ header {
     --bs-btn-focus-shadow-rgb: 30, 122, 79;
 }
 
-/* Variante propia: se usa junto a .btn (class="btn btn-pedal") y solo define las variables del componente */
+/* Variante propia: se usa junto a .btn  */
 .btn-pedal {
     --bs-btn-color: #14213D;
     --bs-btn-bg: #F39A2B;
@@ -150,7 +149,7 @@ header {
 }
 
 /* ---------- 5. Formulario ---------- */
-/* Bootstrap deja el foco y las casillas marcadas en azul fijo: se pasan al verde de marca
+/*  Como se pedia en el ejercicio y se reescribio el css para que Bootstrap deja el foco y las casillas marcadas en azul fijo: se pasan al verde de marca
    (mismo peso que sus reglas; gana la nuestra por cargarse despues) */
 .form-control:focus,
 .form-check-input:focus {

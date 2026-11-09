@@ -65,11 +65,6 @@ De Tarifas.html:
   |    etiqueta	     |solo la palabra: a, p, body  |  1
 
 
-
-
-
-
-
 Semana 2 
 Dia1 
 Estrecha poco a poco la ventana del navegador y describe en la bitácora qué ocurre:
@@ -83,8 +78,6 @@ Estrecha poco a poco la ventana del navegador y describe en la bitácora qué oc
     - Al estrechar: los bloques bajan uno debajo de otro cuando ya no caben en la fila, sin desbordarse.
     - Con flex-wrap y gap todo se acomoda solo, sin media queries.
 
-
-Semana 2
 Dia 2 - Nuestra flota (Grid + Flexbox)
     Columnas observadas con 7 tarjetas (modo dispositivo de DevTools):
     - 1280 px -> 4 columnas (4 tarjetas arriba y 3 abajo)
@@ -125,28 +118,20 @@ Dia 4 - Mobile-first (v1.5)
     1. Las tablas de Tarifas hacian scroll lateral en el celular (la pagina medía 518px en una pantalla de 360).
        Solucion: en el estilo base, letra de 0.8rem, relleno pequeno y overflow-wrap: anywhere en th/td;
        desde 768px vuelven la letra y el relleno normales.
-    2. En Reservas el formulario y el contacto en 2fr 1fr quedaban muy apretados en el celular.
-       Solucion: la base es una sola columna (1fr) y 2fr 1fr se activa solo desde 768px.
-    3. El encabezado en una fila dejaba el nombre y el menu sin espacio en el celular.
+    2. El encabezado en una fila dejaba el nombre y el menu sin espacio en el celular.
        Solucion: en el celular van en columna y centrados (nombre arriba, menu debajo);
        desde 768px se recupera la fila del MiniReto 1 (space-between).
-    4. La portada tenia min-height: 70vh tambien en el celular y dejaba un hueco vacio enorme.
+    3. La portada tenia min-height: 70vh tambien en el celular y dejaba un hueco vacio enorme.
        Solucion: el min-height solo se aplica desde 768px.
-    5. Antes usaba una media query con max-width (desktop-first) para Reservas.
+    4. Antes usaba una media query con max-width (desktop-first) para Reservas.
        Solucion: la cambie a min-width, para que lo basico describa el celular.
 
 
 Semana 3
-Dia 2 - MiniReto 1: flota con Bootstrap 5.3 (pruebas/catalogo-bootstrap.html)
-    Tiempo invertido: ~1 minuto en armar la pagina (la hizo Claude; si tu la haces a mano anota tu tiempo real aqui: ____ min).
-                      Mi version con CSS propio tomo mucho mas: hubo que probar minmax(), auto-fit, flex en la tarjeta y los breakpoints.
-    Codigo de la flota:
-        - CSS propio: 40 lineas de CSS para la flota (.cuadricula-flota + .tarjeta-flota y sus partes);
-          solo la distribucion (.cuadricula-flota) son 5 lineas: display: grid, grid-template-columns con auto-fit/minmax y gap.
-        - Bootstrap: 0 lineas de CSS propio. La distribucion sale de 4 clases por columna
-          (col-12 col-sm-6 col-lg-4 col-xl-3) + "row g-3" en el contenedor; la tarjeta usa card, h-100, d-flex, flex-column, mt-auto.
-    Comprobado en modo dispositivo: 360 px = 1 columna, 576 px = 2 (sm), 992 px = 3 (lg), 1200 px = 4 (xl).
-    CSS y JS (bundle 5.3.3) cargan por CDN con 200 en Network y sin errores.
+Dia 14 - MiniReto 1: Bootstrap
+    Tiempo invertido: 1 Dia en armar la pagina-
+                      Mi version con CSS propio tomo muhco mas tiempo tambien porque no conocia nada de css encambio
+                      con bootstrap solo fue copiar y ya sabia que hacia mucba de las cosas y las otras las deje igual
     Que me dio Bootstrap sin esfuerzo:
         - Las columnas por breakpoint con nombres claros (sm, lg, xl), sin escribir una media query.
         - Tarjetas con borde, esquinas y relleno ya listos (card), todas de la misma altura (h-100).
@@ -156,183 +141,40 @@ Dia 2 - MiniReto 1: flota con Bootstrap 5.3 (pruebas/catalogo-bootstrap.html)
           con Bootstrap el numero de columnas esta fijado por los breakpoints (576, 992, 1200 px): si agrego mas tarjetas no cambia nada, pero no se adapta a anchos intermedios.
         - Los colores de mi marca (verde #1E7A4F, azul noche) y las variables --Espaciado-* no existen aqui;
           el verde es el success de Bootstrap.
-        - El HTML quedo con muchas clases (7 tarjetas x 4 clases de columna) y dependo de un CDN externo.
+        - El HTML quedo con muchas clases (7 tarjetas x 4 clases de columna) .
 
+Día 2 (MiniReto 6): Beneficios y Franja con Utilidades
+Sin CSS propio: Todo se resolvió con clases nativas de Bootstrap 5.3 (cero estilos en línea, cero clases inventadas).
 
-Dia 2 - MiniReto 2 (6): beneficios y franja solo con utilidades (pruebas/catalogo-bootstrap.html)
-    Sin CSS propio: 0 style="", 0 <style> y ninguna clase inventada. Todas las clases son de Bootstrap 5.3
-    (por ejemplo ms-/me- en vez de ml-/mr-, que son de la version 4 y ya no existen).
-    Comprobado: 360 px -> beneficios en 1 columna, franja en columna y sin imagen;
-                768 px -> beneficios en 2 columnas, franja en fila y con imagen (md);
-                1200 px -> beneficios en 4 columnas.
-    Uso de color: verde (text-success / bg-success) para lo destacado y la franja, gris (text-secondary) para descripciones,
-    azul oscuro (text-primary-emphasis) para titulos, naranja (bg-warning) para el enlace de accion.
-    Cinco clases que encontre en la documentacion:
-        1. flex-md-row: la direccion de flex pasa a fila desde md (768 px); por debajo queda en columna con flex-column.
-        2. d-none d-md-block: oculta el elemento y lo muestra como bloque desde md; sirve para la imagen decorativa.
-        3. gap-3: separacion uniforme entre los hijos de un contenedor flex o grid (equivale al gap de CSS).
-        4. text-primary-emphasis: color de texto oscuro de la familia primaria, con buen contraste para titulos.
-        5. rounded-pill: bordes totalmente redondeados; convierte el enlace en una "pastilla" sin usar el componente boton.
-    Otras que use: text-md-start (alinea a la izquierda desde md), justify-content-md-between, align-items-center, fw-bold, fs-3, px-4, py-2, my-5.
+Adaptabilidad probada:
+360 px: 1 columna, franja en columna sin imagen.
+768 px: 2 columnas, franja en fila con imagen.
+1200 px: 4 columnas en beneficios.
+Clases clave usadas: flex-md-row, d-none d-md-block, gap-3, text-primary-emphasis, rounded-pill.
 
+Día 3 (MiniReto 7): Bootstrap en la Página de Inicio (index.html)
+Orden de carga: Primero el CSS de Bootstrap y al final nuestra hoja styles.css para que las reglas propias ganen por orden en la cascada.
+Limpieza de CSS: Se eliminaron clases viejas que ya no se usaban (.portada, .galeria-rutas, .tarjeta-ruta, .cuadricula-flota, etc.), reduciendo notablemente el código.
+Conflictos resueltos: Se ajustaron los colores de enlaces y textos flotantes mediante variables de Bootstrap en :root (--bs-success-rgb, --bs-warning-rgb) para mantener la identidad visual sin usar !important.
 
-Dia 3 - MiniReto 7: Bootstrap en la pagina de inicio (index.html)
-    Orden de carga: primero bootstrap.min.css y despues CSS/styles.css. Si dos reglas tienen la misma
-    especificidad, gana la que se carga despues, por eso nuestra hoja va al final.
-    Que migre a la grilla/utilidades: portada (row + col-md-6), rutas (col-md-4), tipos de bicicleta (col-md-4),
-    flota (col-12 col-sm-6 col-lg-4 col-xl-3), beneficios (col-sm-6 col-lg-3) y la franja final (flex).
-    Que borre de styles.css: .portada, .galeria-rutas, .tarjeta-ruta, .cuadricula-flota, .tarjeta-flota, .tarjetas-bicicletas,
-    .tarjeta-bicicleta, .etiqueta-nuevo, .SeprarIndex, .qs y .servicio (estas dos ya no las usaba nadie).
-    Lo que sigue usando otras paginas quedo marcado con el comentario "USADO POR": encabezado y menu (todas),
-    pie y WhatsApp (todas), tablas (Tarifas), formulario y fila documento/celular (Reservas), contenedor-reservas (Reservas), main/aside.
-    Probado a 360 / 768 / 1280 px: sin scroll horizontal ni imagenes fuera de su contenedor.
-        Ancho   Portada  Rutas  Flota  Beneficios  Franja
-        360     1        1      1      1           columna (sin imagen)
-        768     2        3      2      2           fila (con imagen)
-        1280    2        3      4      4           fila (con imagen)
+Día 4 (MiniReto 8): Migración Completa (Tarifas y Reservas)
+Estructura: Tarifas pasó a dos columnas en pantallas grandes (col-lg-7 y col-lg-5) y Reservas organizó su formulario y datos de contacto de forma fluida.
+Validación: Se conservaron todas las reglas nativas (required, pattern, min, max, etc.).
 
-    Conflictos entre mis estilos y los de Bootstrap (resueltos sin !important):
-    1. Colores de enlaces: Bootstrap pinta todos los <a> de azul (#0d6efd) y subrayados. En DevTools se ve el
-       color del enlace de Bootstrap en lugar del verde de la marca.
-       Solucion: en styles.css una regla "a { color: verde de la marca }" y "a:hover { azul noche }".
-       Al ir despues de Bootstrap y tener la misma especificidad (una etiqueta), gana la nuestra.
-    2. Efecto secundario de la solucion 1: "a:hover" (clase+etiqueta) pesa mas que ".boton-cta" (solo clase), asi que
-       al pasar el mouse el texto del boton se ponia azul noche sobre fondo azul noche (ilegible).
-       Solucion: agregar color en ".boton-cta:hover" (dos clases/pseudoclases pesan mas que "a:hover").
-       Lo mismo con ".whatsapp:hover". Lecciones: la cascada decide primero por especificidad y solo despues por orden.
-    3. Colores de marca vs colores de Bootstrap: bg-success daba #198754 y bg-warning #ffc107, no los de Rueda Libre
-       (#1E7A4F y #F39A2B). Las utilidades de Bootstrap usan !important, asi que no se pueden pisar con CSS normal.
-       Solucion: cambiar las variables que ellas leen en :root (--bs-success-rgb, --bs-warning-rgb,
-       --bs-primary-text-emphasis). Asi las utilidades usan nuestros colores sin pelear con !important.
-    Otros que tambien vi: Bootstrap deja line-height 1.5 en body; nuestro 1.6 gana por ir despues (y lo puse tambien
-    en --bs-body-line-height); fuentes y fondo crema se mantienen (Montserrat/Open Sans, #FAF6EF).
+Comparativa de código:
+v1.0 (antes de Flexbox): 334 líneas.
+v1.5 (CSS propio responsive): 543 líneas (462 con contenido).
+v2.0-beta (actual con Bootstrap): 237 líneas (206 con contenido).
+Reducción: 306 líneas menos (56% de reducción).
 
+Tiempo invertido:
+v1.5 con CSS propio: 4-7 dias ya que no tenia nada de conocimiento de CSS.
+v2.0-beta con Bootstrap: Unos 2 dias de ejecución para migrar tarifas, reservas y limpiar el CSS. 
+Conclusión: Bootstrap redujo el trabajo en la parte de distribución y dio más estabilidad en los breakpoints; se paga con un HTML más cargado y un periodo inicial de ajuste de conflictos.
 
-Dia 4 - MiniReto 8: migracion completa a Bootstrap (v2.0-beta)
-    Tarifas: tablas (col-lg-7) e informacion complementaria (col-lg-5) en dos columnas desde lg; en celular y tablet quedan en una.
-    Reservas: formulario (col-md-8) y contacto (col-md-4) desde md; documento y celular en row g-3 con col-sm-6.
-    Las reglas de validacion nativa siguen igual: required, pattern, type, min y max suman 22 antes y 22 despues.
-    Encabezado y pie de las 4 paginas tambien pasaron a utilidades de Bootstrap (d-flex, flex-md-row, gap, etc.).
-    Probado a 360 / 768 / 1280 px en las 4 paginas: sin scroll horizontal ni imagenes fuera de su contenedor.
-        Tarifas: 1 columna en 360 y 768, 2 columnas en 1280 (665 px y 475 px).
-        Reservas: 1 columna en 360, 2 en 768 y 1280 (proporcion 2:1 = 8/4).
-
-    Conflictos nuevos con Bootstrap (resueltos sin !important):
-    - caption: Bootstrap manda el titulo de la tabla al pie (caption-side: bottom) y lo pinta gris. Solucion: caption-side: top y color propio.
-    - legend: Bootstrap la flota (float:left; width:100%), por lo que dejaba de quedar sobre el borde del fieldset.
-      Solucion: float: none; width: auto en form legend.
-    - Bordes: la utilidad border-top usa !important, asi que no se puede cambiar el color con CSS normal.
-      Solucion: cambiar la variable --bs-border-color en :root.
-
-    COMPARATIVA FINAL: CSS propio (v1.5) vs Bootstrap (v2.0-beta)
-        Lineas de styles.css (git show <commit>:CSS/styles.css | wc -l):
-            v1.0 (commit 67d1d41, antes de Flexbox): 334 lineas
-            v1.5 (commit b7564bb, CSS propio responsive): 543 lineas (462 con contenido)
-            v2.0-beta (actual): 237 lineas (206 con contenido)
-            Reduccion v1.5 -> v2.0-beta: 306 lineas menos = 56 % menos.
-        Tiempo invertido:
-            v1.5 con CSS propio: ____ min (llena con tu tiempo real; abarca Flexbox, Grid y mobile-first, retos 1 al 4 de la semana 2).
-            v2.0-beta con Bootstrap: unos 2 min de ejecucion para migrar tarifas, reservas y limpiar el CSS (hecho por Claude;
-                el reto 7 de inicio y el 8 juntos tambien fueron de pocos minutos). Tu tiempo real: ____ min.
-        Ventajas observadas:
-            - Mucho menos CSS que mantener: la distribucion vive en el HTML y se entiende leyendo las clases (col-md-8, flex-md-row).
-            - Los breakpoints (sm, md, lg, xl) ya vienen pensados y estan documentados.
-            - Tarjetas, grilla y espaciados consistentes entre paginas sin repetir reglas.
-        Desventajas observadas:
-            - El HTML se llena de clases y cuesta mas leerlo (las filas de tarjetas repiten 4 clases de columna).
-            - Hay que descubrir y resolver choques (caption, legend, enlaces, colores) con la cascada; se perdio tiempo en eso.
-            - Dependencia de un CDN externo y de los nombres de las clases de Bootstrap.
-            - Los colores de marca solo se aplican a las utilidades despues de remapear variables --bs-*.
-        Conclusion: Bootstrap si redujo el trabajo en la parte de distribucion (de 543 a 237 lineas de CSS, un 56 % menos)
-            y dio mas estabilidad en los breakpoints; se paga con HTML mas cargado y con un periodo de ajuste de conflictos.
-            Para un sitio con varias paginas y poco tiempo vale la pena; para algo con una identidad visual muy particular,
-            el CSS propio seguiria siendo mas fino. Recomendacion: seguir con Bootstrap para la estructura y dejar styles.css
-            solo para identidad (colores, tipografia, tablas y formulario).
-
-
-Dia 5 - MiniReto 9: navbar responsive y botones unificados
-    Navbar de Bootstrap (navbar-expand-lg) en las 4 paginas: enlaces visibles desde 992 px, por debajo aparece el boton hamburguesa.
-    El data-bs-target del boton (#menuPrincipal) coincide con el id del contenedor colapsable en las 4 paginas.
-    Pagina actual: clase "active" + aria-current="page" en el nav-link (reemplaza la clase "activo" de la semana 1).
-    El bundle de JavaScript se carga una sola vez por pagina, justo antes de </body> (1 etiqueta script por pagina).
-    Botones: btn-success (relleno) = accion principal (Reservar, Inscribirme); btn-outline-success (contorno) = consultar
-    (Ver tarifas, Ver recorridos, Visita nuestras otras opciones); btn-warning = destacado sobre fondo verde.
-    Tamanos: btn-lg en la portada, la franja final y el formulario; tamano normal dentro de las tarjetas.
-    Pruebas: a 360 y 991 px aparece el boton de menu; a 992 y 1280 px no, y los enlaces se ven directos.
-    Con el mouse el boton abre y cierra el menu. Con el teclado: Tab llega al boton, Enter abre, Tab recorre Inicio/Tarifas/Reservas/Rutas,
-    y Enter sobre el boton lo cierra.
-    Conflictos: los botones btn-success y btn-outline-success traen su propio verde (#198754); se cambiaron las variables --bs-btn-* en styles.css
-    para usar el verde de la marca, sin !important. Lo mismo con --bs-navbar-* para los colores del menu.
-
-
-Dia 5 - MiniReto 10: cards y carrusel de promociones (index.html)
-    Flota, rutas y tipos de bicicleta ahora usan card dentro de la grilla (row g-3 + col-*): card h-100 > card-img-top + card-body
-    (card-title, card-text, precio y boton). h-100 hace que todas las cards de una fila midan lo mismo.
-    Carrusel de 3 promociones (carousel slide, data-bs-ride="carousel"), con indicadores y controles anterior/siguiente.
-    Cada imagen tiene alt; los controles llevan texto para lectores de pantalla en visually-hidden ("Promocion anterior/siguiente").
-    Pruebas: 360 / 768 / 1280 px sin scroll horizontal; cards de igual altura en cada fila;
-    el carrusel avanza solo a los 5 s y con el boton siguiente; con teclado los botones del carrusel reciben foco y Enter cambia de promocion.
-    styles.css: no habia reglas de tarjetas propias que borrar (ya se habian eliminado en el MiniReto 7);
-    solo se agrego --bs-card-border-color para que las cards usen el gris de la marca.
-
-
-Dia 6 - MiniReto 11: formulario con validacion visual, alerta y modal (Reservas)
-    Formulario: form-label, form-control, form-check / form-check-input / form-check-label en todos los controles.
-    <form class="needs-validation" novalidate>: el script oficial de Bootstrap (copiado sin cambios) agrega "was-validated"
-    y muestra los .invalid-feedback; las reglas nativas (required, pattern, min, max, minlength, type=email) siguen decidiendo si es valido.
-    Mensajes por campo que explican como corregir (por ejemplo: "El celular debe tener 10 digitos y empezar por 3").
-    Alerta informativa cerrable arriba del formulario (alert-dismissible + btn-close + data-bs-dismiss="alert").
-    Modal "Politicas de alquiler" con las 5 politicas en lista ordenada, abierto desde el boton "Ver politicas" junto a la casilla de aceptacion
-    (data-bs-toggle="modal" y data-bs-target="#modalPoliticas" = id del modal).
-    Pruebas: formulario vacio -> 9 mensajes especificos y no se envia; pattern del celular, min/max de la cantidad, minlength del nombre
-    (probado escribiendo a mano: 2 letras = invalido) y el correo siguen funcionando; formulario completo -> valido.
-    Alerta: se cierra con su boton (tambien con Enter). Modal: se abre con Enter en el boton, se cierra con Esc y con su boton, y el foco vuelve al boton.
-    360 px y 768 px sin scroll horizontal; documento y celular apilados en el celular y en una fila desde 768.
-    Correcciones de fallos que ya tenia el formulario: las etiquetas de los radio apuntaban todas a for="empezando" (ahora cada una a su id),
-    el textarea repetia id y name "nombre" (ahora "observaciones") y action="gracias.html" no coincidia con Gracias.html
-    (en GitHub Pages las mayusculas importan, daria error 404).
-    Conflicto con Bootstrap: mis reglas form input / form label pisaban .form-control y los estilos de validacion; las borre de styles.css.
-
-
-Dia 6 - MiniReto 12: Rueda Libre v2.0 con identidad propia
-    Variables de Bootstrap sobrescritas en styles.css (despues de bootstrap.min.css, sin forzar reglas):
-        --bs-primary y --bs-primary-rgb = Verde Ruta (#1E7A4F, 30 122 79); --bs-link-color(-rgb) y hover; --bs-body-font-family (Open Sans);
-        --bs-heading-color (Azul Noche); --bs-border-radius (0.5rem); --bs-border-color (Gris Asfalto); --bs-form-invalid-color.
-    Con eso bg-primary, text-primary, los enlaces y los botones principales muestran los colores de marca y no el azul por defecto.
-    Botones: .btn-primary y .btn-outline-primary con variables --bs-btn-* (hover y active en verdes mas oscuros);
-    variante propia .btn-pedal (Naranja Pedal #F39A2B con texto Azul Noche, contraste 7.2:1).
-    Clases propias que complementan a Bootstrap: .titulo-seccion (titulos), .portada-marca (portada), .pie-marca (pie) e .icono-marca (iconos).
-    Bootstrap Icons 1.11.3 por CDN (con integrity): navbar, datos de contacto (telefono, correo, ubicacion, horario), beneficios,
-    pie y enlace de WhatsApp. Todos los iconos son decorativos (aria-hidden="true") porque siempre van junto a un texto;
-    los botones que solo llevan icono (hamburguesa, cerrar y flechas del carrusel) tienen aria-label o texto visually-hidden.
-    Lista de errores comunes: 0 !important en styles.css, 0 clases ni atributos de Bootstrap 4 (ml-, mr-, data-toggle, etc.),
-    hoja propia despues de Bootstrap en las 4 paginas, bundle 1 sola vez por pagina, todas las grillas con container > row > col.
-    Se encontro una col fuera de row (cantidad de bicicletas en Reservas) y se envolvio en un row.
-    Contraste (todos los textos visibles >= 4.5:1, medido con un script en las 4 paginas):
-        blanco sobre Verde Ruta 5.3:1; Azul Noche sobre Naranja Pedal 7.2:1; crema sobre Azul Noche 14.8:1 (pie);
-        enlaces verdes sobre crema 4.9:1. Dos hallazgos arreglados: el texto blanco del boton de WhatsApp sobre su verde daba 2:1
-        (ahora Azul Noche, 8:1) y el rojo de los errores del formulario daba 4.2:1 sobre el crema (ahora #b02a37, 6:1).
-    Conflictos resueltos: el foco de los campos y las casillas marcadas eran azul fijo de Bootstrap (se cambio a verde con la
-    misma especificidad y gana por ir despues); mis reglas a/a:hover quedaron innecesarias porque ahora lo resuelve --bs-link-color.
-    Otros arreglos: el enlace de correo de inicio decia "mailito:" (ahora "mailto:").
-    Pruebas: 360 / 768 / 1280 px en las 4 paginas sin scroll horizontal, imagenes dentro de su contenedor y fuente de iconos cargada;
-    menu con mouse y teclado (reto 9), carrusel y modal con teclado (retos 10 y 11).
-    Capturas: img/capturas/antes-inicio.png y img/capturas/despues-inicio.png (inicio a 1280 px).
-    Pendiente (lo hace la persona): commit de lanzamiento y publicar GitHub Pages (v2.0), y abrir la URL en un celular real.
-
-RESUMEN DE LA SEMANA (Rueda Libre v1.0 -> v2.0)
-    Retos 1-4: Flexbox, Grid y mobile-first con CSS propio (v1.5, 543 lineas de CSS).
-    Retos 5-8: misma base con Bootstrap; comparativa 543 -> 237 lineas (56 % menos) y v2.0-beta.
-    Retos 9-11: navbar colapsable, botones unificados, cards, carrusel, validacion visual, alerta y modal.
-    Reto 12: identidad de marca con variables, botones, clases propias e iconos. Lo mas dificil: entender la cascada
-    (especificidad y orden) para que mis estilos y los de Bootstrap no se pisaran. Lo que mas ayudo: cambiar variables --bs-*
-    en vez de pelear con las reglas de Bootstrap.
-
-
-Ajuste final de estetica: "Como alquilar", "Encuentranos", "Que llevar" y horarios
-    Inicio: "Como alquilar" con los pasos numerados en circulos verdes (.insignia-marca) y una tarjeta de beneficios con iconos;
-    "Encuentranos" con una tarjeta de contacto (telefono, correo, ubicacion) con botones "Como llegar" y "Escribenos", y la foto de la tienda.
-    Tarifas: "Salidas de los recorridos" y "Que llevar" ahora son tarjetas con iconos; la tabla de recorridos tiene el id Tablas_recorridos
-    (antes los enlaces apuntaban a un id que no existia). Reservas: el horario de atencion tambien es una tarjeta.
-    Tablas: con pantallas anchas las palabras ya no se parten ("Distanci-a"); la regla overflow-wrap: anywhere queda solo en el celular.
-    Textos corregidos de paso: "Acercate", "variadades" y "seguriad total mente"; "Encuentranos" ahora lleva tilde.
+Días 5 y 6 (MiniRetos 9 al 12): Componentes Avanzados e Identidad
+Navbar y Botones: Menú desplegable hamburguesa (navbar-expand-lg) operativo en todas las páginas, con la página actual marcada (active y aria-current). Botones unificados (btn-success, btn-outline-success, btn-warning).
+Tarjetas y Carrusel: Flota, rutas y tipos de bicicleta se pasaron a tarjetas uniformes (card h-100). Se integró un carrusel dinámico de 3 promociones con controles accesibles.
+Formulario y Accesibilidad: Se habilitó la validación visual con clases nativas de Bootstrap (needs-validation), mensajes claros por campo, una alerta superior cerrable y un modal con las políticas de alquiler.
+Identidad de Marca: Se redefinieron las variables raíz de Bootstrap (--bs-primary, --bs-body-font-family, --bs-heading-color, etc.) para usar la paleta propia (Verde Ruta, Azul Noche y Naranja Pedal) y se integraron Bootstrap Icons mediante CDN para acompañar los textos de contacto, beneficios y menús.
+Correcciones estéticas finales: Se mejoró la presentación de las secciones "Cómo alquilar", "Encuéntranos" y "Qué llevar" con tarjetas e iconos, y se corrigieron pequeños detalles tipográficos y de accesibilidad (como contrastes y enlaces rotos).
