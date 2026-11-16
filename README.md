@@ -5,8 +5,8 @@ Sitio web de una tienda de bicicletas, hecho con HTML, CSS, Bootstrap y Tailwind
 🛠️ Tecnologías
 HTML5: estructura semántica de las páginas
 CSS3: estilos personalizados
-Bootstrap: [explica para qué lo usaste, p. ej.: barra de navegación, carrusel, sistema de grillas]
-Tailwind CSS: [explica para qué lo usaste, p. ej.: espaciados, colores y tarjetas de producto]
+Bootstrap
+Tailwind CSS
 
 ✨ Funcionalidades
 Página de inicio con [banner / carrusel de bicicletas destacadas]
