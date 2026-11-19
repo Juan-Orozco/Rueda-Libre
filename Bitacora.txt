@@ -180,33 +180,38 @@ Identidad de Marca: Se redefinieron las variables raíz de Bootstrap (--bs-prima
 Correcciones estéticas finales: Se mejoró la presentación de las secciones "Cómo alquilar", "Encuéntranos" y "Qué llevar" con tarjetas e iconos, y se corrigieron pequeños detalles tipográficos y de accesibilidad (como contrastes y enlaces rotos).
 
 Semana 4
-Mini Reto 1 (Tailwind): Prototipo "Rueda Nocturna" con Play CDN
-    Archivo: nocturna/prototipo.html. Carga el script del Play CDN de Tailwind,
-    sin <style>, sin style="" y sin clases de Bootstrap. Un solo h1 ("Rueda Nocturna").
-    Familias de utilidades usadas:
-        - Espaciado: px-6, py-24, space-y-8, p-4, px-8, py-3, mx-auto, gap-4
-        - Tamanos: max-w-3xl, max-w-xl, max-w-md, w-40, w-fit
-        - Colores: bg-slate-950, bg-slate-800, bg-amber-400, text-white, text-slate-300, text-amber-400
-        - Tipografia: text-5xl, text-lg, text-sm, font-extrabold, font-bold, leading-relaxed,
-          tracking-widest, tracking-tight, uppercase
+Mini Reto 1 (Tailwind): Prototipo con Play CDN
+    nocturna/prototipo.html con el Play CDN, sin <style> ni style="", un solo h1.
+    Use espaciado (p-*, space-y-*), tamanos (max-w-*, w-*), colores (bg-*, text-*) y tipografia (text-5xl, font-bold, uppercase, tracking-*).
+    Boton en Bootstrap (semana 2): class="btn btn-success", el boton ya venia hecho.
+    Boton en Tailwind: class="rounded-lg bg-amber-400 px-8 py-3 font-semibold text-slate-950", lo arme pieza por pieza.
+    Diferencia: Bootstrap da componentes ya disenados; Tailwind da clases pequenas que yo combino. Mas clases en el HTML pero mas control.
 
-    El boton "Inscribete":
-    Semana 2 con Bootstrap:
-        <a href="../Paginas/Reservas.html" class="btn btn-success">Reservar</a>
-        Bastaba la clase "btn" (que ya trae relleno, borde redondeado, peso de letra, cursor
-        y estados hover/focus) mas "btn-success" para el color. Dos clases y el boton ya estaba hecho;
-        para cambiar el diseno tenia que sobrescribir variables (--bs-success-rgb) o el CSS de Bootstrap.
-    Hoy con Tailwind:
-        <a href="../Paginas/Reservas.html"
-           class="inline-block rounded-lg bg-amber-400 px-8 py-3 text-base font-semibold
-                  uppercase tracking-wide text-slate-950 hover:bg-amber-300">Inscribete</a>
-        No existe una clase "boton": lo arme pieza por pieza. inline-block para que acepte relleno,
-        px-8 py-3 el relleno, bg-amber-400 y text-slate-950 los colores, font-semibold uppercase
-        tracking-wide la tipografia, rounded-lg las esquinas y hover:bg-amber-300 el estado al pasar el mouse.
+Mini Reto 2: Tailwind con la CLI y botones
+    En nocturna/: npm install tailwindcss @tailwindcss/cli, src/input.css con @import "tailwindcss" y .gitignore con node_modules/.
+    Comando: npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch (o npm run dev).
+    Busque en output.css: .bg-amber-400 si aparece (la uso), .bg-pink-500 no aparece.
+    Por que: la CLI lee mis archivos HTML y solo genera las clases que encuentra escritas, por eso el CSS queda liviano.
+    Botones: principal (amarillo), secundario (gris) y contorno (borde amarillo). Todos con hover: y con focus:ring-4 en lugar del contorno del navegador.
+    Probado con Tab: cada boton muestra el anillo de foco.
+    Se sube output.css porque GitHub Pages no ejecuta la CLI; node_modules no se sube.
 
-    Diferencia clave:
-        Tailwind es UTILITY-FIRST: no trae componentes, trae clases pequenas que hacen una sola
-        cosa (un relleno, un color, un tamano de letra) y yo las combino en el HTML. El HTML queda
-        con mas clases, pero tengo control total del diseno sin escribir CSS propio.
+Mini Reto 3: Cards de rutas
+    Seccion "Rutas" con 3 cards una debajo de otra, mismas clases base, solo cambian datos y color de la etiqueta.
+    Etiqueta de nivel: verde "Nivel: Facil", amarillo "Nivel: Medio", rojo "Nivel: Dificil" (color y texto).
+    Datos: nombre pequeno y gris (text-xs text-slate-400), valor en negrita.
+    Hover: hover:shadow-xl y hover:border-amber-400. El borde ya existe (border), solo cambia de color, asi no se mueve nada.
+    Imagen con h-48 w-full object-cover para que todas tengan el mismo alto.
 
-        
+Mini Reto 4: Kit de componentes (nocturna/componentes.html)
+    Muestra los 3 botones, una card, 3 alertas (informacion, exito, advertencia) y 2 campos (correo y celular).
+    Alerta de exito con role="status" para que el lector de pantalla la anuncie como aviso.
+    Campos con <label for="..."> unido al id del input, placeholder, texto de ayuda debajo y foco con anillo.
+    Reglas del kit (iguales en todos los componentes):
+        - Radio: rounded-lg en botones, cards, alertas y campos. Solo la etiqueta de nivel es rounded-full.
+        - Espaciado: escala 2, 4, 6 (gap-4, space-y-4, p-4 en alertas, p-6 en cards, px-6 py-3 en botones, px-4 py-3 en campos).
+        - Colores: amber-400 principal, slate-950/900/800/700 fondos, sky/green/yellow para info/exito/advertencia, red solo para nivel dificil.
+        - Sombra: shadow-md normal, shadow-xl al pasar el mouse por la card.
+        - Foco: focus:outline-none + focus:ring-4 focus:ring-amber-200 en todo lo que se usa con teclado.
+    Ajuste en index.html: la card paso de rounded-xl y p-5 a rounded-lg y p-6 para cumplir las reglas.
+    Publicado en GitHub Pages: https://juan-orozco.github.io/Rueda-Libre/nocturna/componentes.html
