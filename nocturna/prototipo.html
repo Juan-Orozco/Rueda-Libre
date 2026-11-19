@@ -3,29 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rueda Nocturna | Rueda Libre</title>
+    <!-- Play CDN de Tailwind CSS (solo para prototipos) -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
-    <title>Rueda Nocturna</title>
 </head>
-<body>
-    <header>
-        <h1 class="text-center p-4
-        ">Rueda Nocturna</h1>
+<body class="bg-slate-950 text-slate-100">
 
-    </header>    
+    <main>
+        <!-- Sección principal (hero) -->
+        <section class="mx-auto max-w-3xl px-6 py-24 space-y-8 text-center">
 
-    <main class="p-2">
-        <div class=" border rounded-xl p-6 max-w-md flex flex-col" >
-            <span class=" border border-yellow-500 bg-yellow-500 border p-2 rounded-full self">Nuevo · Jueves a sábado </span>
-            <h2 class="p-2 text-center">Descubre Medellín en bici cuando se encienden las luces </h2>
-            <p>3 rutas </p>
-            <p>Desde $55.000 </p>
-            <button  class="border-1 border-yellow-500 bg-yellow-500 rounded-xl p-1 self-end">Inscribete</button>
-        </div>
+            <!-- Etiqueta de campaña -->
+            <p class="mx-auto w-fit rounded-full bg-amber-400 px-4 py-1 text-xs font-bold uppercase tracking-widest text-slate-950">
+                Nuevo · Jueves a sábado
+            </p>
+
+            <!-- Único título principal -->
+            <h1 class="text-5xl font-extrabold tracking-tight text-white">
+                Rueda Nocturna
+            </h1>
+
+            <!-- Subtítulo -->
+            <p class="mx-auto max-w-xl text-lg leading-relaxed text-slate-300">
+                Descubre Medellín en bici cuando se encienden las luces
+            </p>
+
+            <!-- Datos destacados -->
+            <ul class="mx-auto flex max-w-md justify-center gap-4">
+                <li class="w-40 rounded-xl bg-slate-800 p-4">
+                    <span class="block text-3xl font-bold text-amber-400">3</span>
+                    <span class="text-sm uppercase tracking-wide text-slate-400">rutas</span>
+                </li>
+                <li class="w-40 rounded-xl bg-slate-800 p-4">
+                    <span class="block text-sm uppercase tracking-wide text-slate-400">Desde</span>
+                    <span class="block text-3xl font-bold text-amber-400">$55.000</span>
+                </li>
+            </ul>
+
+            <!-- Enlace con apariencia de botón -->
+            <a href="../Paginas/Reservas.html"
+               class="inline-block rounded-lg bg-amber-400 px-8 py-3 text-base font-semibold uppercase tracking-wide text-slate-950 hover:bg-amber-300">
+                Inscríbete
+            </a>
+
+        </section>
     </main>
 
-    <footer>
-
-    </footer>
 </body>
 </html>

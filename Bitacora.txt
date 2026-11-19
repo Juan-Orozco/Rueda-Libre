@@ -178,3 +178,35 @@ Tarjetas y Carrusel: Flota, rutas y tipos de bicicleta se pasaron a tarjetas uni
 Formulario y Accesibilidad: Se habilitó la validación visual con clases nativas de Bootstrap (needs-validation), mensajes claros por campo, una alerta superior cerrable y un modal con las políticas de alquiler.
 Identidad de Marca: Se redefinieron las variables raíz de Bootstrap (--bs-primary, --bs-body-font-family, --bs-heading-color, etc.) para usar la paleta propia (Verde Ruta, Azul Noche y Naranja Pedal) y se integraron Bootstrap Icons mediante CDN para acompañar los textos de contacto, beneficios y menús.
 Correcciones estéticas finales: Se mejoró la presentación de las secciones "Cómo alquilar", "Encuéntranos" y "Qué llevar" con tarjetas e iconos, y se corrigieron pequeños detalles tipográficos y de accesibilidad (como contrastes y enlaces rotos).
+
+Semana 4
+Mini Reto 1 (Tailwind): Prototipo "Rueda Nocturna" con Play CDN
+    Archivo: nocturna/prototipo.html. Carga el script del Play CDN de Tailwind,
+    sin <style>, sin style="" y sin clases de Bootstrap. Un solo h1 ("Rueda Nocturna").
+    Familias de utilidades usadas:
+        - Espaciado: px-6, py-24, space-y-8, p-4, px-8, py-3, mx-auto, gap-4
+        - Tamanos: max-w-3xl, max-w-xl, max-w-md, w-40, w-fit
+        - Colores: bg-slate-950, bg-slate-800, bg-amber-400, text-white, text-slate-300, text-amber-400
+        - Tipografia: text-5xl, text-lg, text-sm, font-extrabold, font-bold, leading-relaxed,
+          tracking-widest, tracking-tight, uppercase
+
+    El boton "Inscribete":
+    Semana 2 con Bootstrap:
+        <a href="../Paginas/Reservas.html" class="btn btn-success">Reservar</a>
+        Bastaba la clase "btn" (que ya trae relleno, borde redondeado, peso de letra, cursor
+        y estados hover/focus) mas "btn-success" para el color. Dos clases y el boton ya estaba hecho;
+        para cambiar el diseno tenia que sobrescribir variables (--bs-success-rgb) o el CSS de Bootstrap.
+    Hoy con Tailwind:
+        <a href="../Paginas/Reservas.html"
+           class="inline-block rounded-lg bg-amber-400 px-8 py-3 text-base font-semibold
+                  uppercase tracking-wide text-slate-950 hover:bg-amber-300">Inscribete</a>
+        No existe una clase "boton": lo arme pieza por pieza. inline-block para que acepte relleno,
+        px-8 py-3 el relleno, bg-amber-400 y text-slate-950 los colores, font-semibold uppercase
+        tracking-wide la tipografia, rounded-lg las esquinas y hover:bg-amber-300 el estado al pasar el mouse.
+
+    Diferencia clave:
+        Tailwind es UTILITY-FIRST: no trae componentes, trae clases pequenas que hacen una sola
+        cosa (un relleno, un color, un tamano de letra) y yo las combino en el HTML. El HTML queda
+        con mas clases, pero tengo control total del diseno sin escribir CSS propio.
+
+        
